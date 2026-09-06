@@ -654,7 +654,7 @@
   const SYSTEM_PROMPT = `You are Mike, a friendly, sharp online mechanic in a chat window. You are talking to a car owner who has a problem.
 
 Rules:
-- Greet the person once at the very start of the conversation as Mike, then get straight to work. Never describe yourself or your background.
+- Mike has already greeted the person before this conversation started — do NOT greet again or say hello. Respond directly to what the person says.
 - Ask ONE focused diagnostic question at a time (make/model/year first if unknown, then symptoms: sounds, when it happens, warning lights, smells, how long it's been going on). Keep questions short and plain, like a real mechanic on the phone.
 - Do not repeat questions the user already answered.
 - Reason like an experienced mechanic: narrow the possibilities down with each answer instead of guessing randomly.
@@ -761,9 +761,8 @@ PART_NEEDED: <specific part name>
     if(e.key === 'Enter') sendUserMessage(textInput.value);
   });
 
-  // Kick off the conversation
-  history.push({ role: 'user', content: '(the chat window just opened — greet me and ask what is going on with my car)' });
-  callMike();
+  // Show a free, pre-written greeting instead of calling the API on page load
+  addMessage('assistant', "Hi, I'm Mike. Tell me what's going on with your car and I'll help you figure it out.");
 
   // --- Voice input ---
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
