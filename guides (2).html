@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIY Guides — Honest Ride Parts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#1B1F22; --bg-panel:#23282B; --steel:#3E4C59;
+    --accent:#E8590C; --accent-dim:#B8480C; --paper:#F4EFE6;
+    --ink:#1B1F22; --muted:#8A9199; --line:#333B40;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg-deep);font-family:'IBM Plex Sans',sans-serif;color:var(--paper);font-size:16px;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 48px;}
+
+  header{padding:32px 16px 22px;text-align:center;border-bottom:2px solid var(--accent);}
+  .brand-row{display:flex;align-items:center;justify-content:center;gap:12px;}
+  .brand-row .car-icon{width:38px;height:38px;color:var(--accent);flex-shrink:0;}
+  header h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;letter-spacing:0.5px;margin:0;}
+  header h1 span{color:var(--accent);}
+  header p{margin:8px 0 0;font-size:15.5px;color:var(--muted);letter-spacing:0.3px;}
+
+  .site-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:16px;}
+  .site-nav a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.6px;text-transform:uppercase;color:var(--paper);text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent;}
+  .site-nav a:hover, .site-nav a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);}
+  .site-nav .nav-current{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);padding-bottom:4px;border-bottom:2px solid var(--accent);}
+
+  section{margin-top:30px;}
+  .section-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:1px;color:var(--accent);margin:0 0 6px;}
+  .section-intro{font-size:14.5px;color:var(--muted);margin:0 0 18px;line-height:1.5;}
+
+  .guide-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px 18px 20px;
+    margin-bottom:16px;
+  }
+  .guide-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .guide-top h2{font-family:'Oswald',sans-serif;font-size:19px;margin:0;}
+  .guide-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.4px;color:var(--accent-dim);background:rgba(232,89,12,0.12);padding:3px 8px;border-radius:3px;white-space:nowrap;}
+  .guide-intro{font-size:14px;color:var(--muted);margin:8px 0 14px;line-height:1.5;}
+  .steps{margin:0;padding-left:0;list-style:none;counter-reset:step;}
+  .steps li{
+    counter-increment:step;
+    position:relative;
+    padding-left:34px;
+    margin-bottom:10px;
+    font-size:14.5px;
+    line-height:1.55;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;top:0;
+    width:24px;height:24px;
+    background:var(--accent);
+    color:var(--paper);
+    border-radius:50%;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .steps li:last-child{margin-bottom:0;}
+  .guide-note{
+    font-size:13px;
+    color:var(--muted);
+    border-top:1px dashed var(--line);
+    padding-top:10px;
+    margin-top:14px;
+  }
+
+  footer{text-align:center;font-size:13px;color:var(--muted);margin-top:36px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand-row">
+      <svg class="car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13"></path>
+        <path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"></path>
+        <circle cx="7" cy="17.5" r="1.5"></circle>
+        <circle cx="17" cy="17.5" r="1.5"></circle>
+      </svg>
+      <h1>HONEST RIDE <span>PARTS</span></h1>
+    </div>
+    <p>Real parts. Real diagnosis. No upsell, ever.</p>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="reviews.html">Buyer's Guide</a>
+      <span class="nav-current">DIY Guides</span>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section>
+    <p class="section-label">DIY GUIDES</p>
+    <p class="section-intro">Simple jobs you can do yourself in the driveway, explained the way we'd explain it in person — no jargon, no skipped steps. If it's not on this list, ask Mike on the home page.</p>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Checking Your Brake Pads</h2>
+        <span class="guide-meta">15 MIN</span>
+      </div>
+      <p class="guide-intro">Squealing when you brake, or just want peace of mind before a road trip.</p>
+      <ol class="steps">
+        <li>Park on level ground, engine off, and locate the wheel closest to a brake caliper you can see through the wheel spokes.</li>
+        <li>Look through the caliper opening at the pad pressed against the rotor — most have a wear groove or metal backing you can spot with a flashlight.</li>
+        <li>If the pad material looks thinner than about a quarter inch (roughly a pencil eraser's thickness), it's time to replace them soon.</li>
+        <li>Repeat on the other front wheel — front pads usually wear faster than rear.</li>
+      </ol>
+      <p class="guide-note">If you can't see the pad clearly or you hear grinding, that's worth having a second set of eyes on — ask Mike before you keep driving on it.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Changing Your Wiper Blades</h2>
+        <span class="guide-meta">10 MIN</span>
+      </div>
+      <p class="guide-intro">Streaking, skipping, or squeaking every time it rains.</p>
+      <ol class="steps">
+        <li>Lift the wiper arm away from the windshield until it locks upright.</li>
+        <li>Find the small tab or clip where the blade connects to the arm and press it while sliding the old blade down and off.</li>
+        <li>Slide the new blade on until it clicks into place, matching the connector type to your old blade.</li>
+        <li>Lower the arm gently back onto the glass — don't let it snap down on its own.</li>
+      </ol>
+      <p class="guide-note">Bring your old blade with you if you're buying in person — connector shapes vary a lot between makes.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Checking Engine Oil Level</h2>
+        <span class="guide-meta">5 MIN</span>
+      </div>
+      <p class="guide-intro">Good habit before a long drive, or if the oil light flickered on.</p>
+      <ol class="steps">
+        <li>Park on level ground and let the engine sit for a few minutes after driving so oil settles back in the pan.</li>
+        <li>Pull the dipstick out, wipe it clean with a rag, then push it all the way back in.</li>
+        <li>Pull it out again and check where the oil film sits against the min/max marks near the tip.</li>
+        <li>If it's near or below the low mark, top up gradually with the oil type listed in your owner's manual, checking again after each small pour.</li>
+      </ol>
+      <p class="guide-note">Not sure which oil your engine takes? Ask Mike — he'll ask your year, make, and model and tell you.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Jump-Starting a Car Safely</h2>
+        <span class="guide-meta">10 MIN</span>
+      </div>
+      <p class="guide-intro">Battery's dead and you've got jumper cables or a jump box handy.</p>
+      <ol class="steps">
+        <li>Park the working car close enough for the cables to reach, engines off, both cars in park with parking brakes on.</li>
+        <li>Connect red to the dead battery's positive terminal, then red to the working battery's positive terminal.</li>
+        <li>Connect black to the working battery's negative terminal, then black to an unpainted metal bolt or bracket on the dead car's engine — not the dead battery itself.</li>
+        <li>Start the working car, let it run a couple minutes, then try starting the dead car. Remove cables in reverse order once it's running.</li>
+      </ol>
+      <p class="guide-note">If it won't hold a charge after this, the battery itself is likely the problem — ask Mike to confirm before you buy a new one.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Reading Dashboard Warning Lights</h2>
+        <span class="guide-meta">2 MIN</span>
+      </div>
+      <p class="guide-intro">Something lit up on your dash and you're not sure if it's urgent.</p>
+      <ol class="steps">
+        <li>Note the color: red usually means stop and check now, yellow/orange means get it looked at soon, green/blue are just status indicators.</li>
+        <li>Check your owner's manual's symbol chart — glovebox is the usual spot — to match the icon to its meaning.</li>
+        <li>For a red engine, oil, or temperature light, pull over safely and shut the engine off rather than continuing to drive.</li>
+        <li>For a yellow check-engine light with no other symptoms, it's usually safe to drive carefully to a shop within a few days.</li>
+      </ol>
+      <p class="guide-note">Don't recognize the symbol or it's flashing? Describe it to Mike and he'll walk you through it.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Checking Your Fluids</h2>
+        <span class="guide-meta">10 MIN</span>
+      </div>
+      <p class="guide-intro">Quick monthly check — coolant, brake fluid, and washer fluid.</p>
+      <ol class="steps">
+        <li>With the engine cold, find the coolant reservoir (usually a semi-clear plastic tank) and check the level against its min/max lines.</li>
+        <li>Check the brake fluid reservoir near the back of the engine bay — level should sit between the marks on the side, and the fluid should look clear to light amber, not dark brown.</li>
+        <li>Top off washer fluid if it's low — it doesn't affect how the car runs, but it's easy to forget until you need it.</li>
+        <li>Never open the coolant cap on a hot engine — pressure can cause burns.</li>
+      </ol>
+      <p class="guide-note">Brake fluid looking dark or the pedal feeling soft? That's worth asking Mike about before it becomes a bigger issue.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Rotating Your Tires</h2>
+        <span class="guide-meta">30 MIN</span>
+      </div>
+      <p class="guide-intro">Evens out tire wear — worth doing roughly every 5,000-7,500 miles.</p>
+      <ol class="steps">
+        <li>With the car safely jacked and supported on stands, remove all four wheels.</li>
+        <li>Move front tires straight back to the rear on the same side, and rear tires forward to the front on the opposite side (front-wheel-drive pattern) — check your manual, since the pattern differs for rear- and all-wheel-drive.</li>
+        <li>Reinstall each wheel and hand-tighten lug nuts in a star pattern before torquing to spec.</li>
+        <li>Lower the car and torque the lug nuts again once all four wheels are on the ground.</li>
+      </ol>
+      <p class="guide-note">Not comfortable jacking up your own car? Most shops will do a rotation quickly and cheaply — ask Mike what a fair price looks like.</p>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-top">
+        <h2>Battery Care in Cold Weather</h2>
+        <span class="guide-meta">5 MIN</span>
+      </div>
+      <p class="guide-intro">Cold weather is when weak batteries finally give out.</p>
+      <ol class="steps">
+        <li>Check the battery terminals for white or greenish corrosion buildup, and clean it off with a wire brush if you see any.</li>
+        <li>Make sure the terminal clamps are snug — a loose connection can mimic a dead battery.</li>
+        <li>If your battery is 3+ years old, get it load-tested before winter hits rather than waiting for it to fail on a cold morning.</li>
+        <li>Avoid running accessories (heater, lights, radio) for long periods with the engine off, especially in the cold.</li>
+      </ol>
+      <p class="guide-note">Slow to start even after cleaning the terminals? That's usually the battery itself — ask Mike to confirm before you buy a new one.</p>
+    </div>
+  </section>
+
+  <footer>Honest Ride Parts — real parts, real answers.<br>© 2026 Honest Ride Parts. All rights reserved.</footer>
+</div>
+</body>
+</html>
