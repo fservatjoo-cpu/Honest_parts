@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="impact-site-verification" content="b5a4b2de-4e70-4f85-bb40-bc7c69a93548" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Honest Ride Parts</title>
@@ -405,6 +406,12 @@
     padding:12px;
     border-radius:5px;
   }
+  .parts-link-secondary{
+    margin-top:8px;
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
   .mic-note{
     font-size:13px;
     color:var(--muted);
@@ -496,6 +503,7 @@
           <p class="search-result-label">SEARCHING FOR</p>
           <p class="search-result-query" id="searchResultQuery"></p>
           <a class="parts-link" id="searchResultLink" href="#" target="_blank" rel="noopener">Search Advance Auto Parts</a>
+          <a class="parts-link parts-link-secondary" id="searchResultLinkAmazon" href="#" target="_blank" rel="noopener">Search Amazon</a>
         </div>
       </div>
     </div>
@@ -554,6 +562,7 @@
           <p class="part-name" id="partName"></p>
           <p class="part-reason" id="partReason"></p>
           <a class="parts-link" id="partsLink" href="#" target="_blank" rel="noopener">Search this part at Advance Auto Parts</a>
+          <a class="parts-link parts-link-secondary" id="partsLinkAmazon" href="#" target="_blank" rel="noopener">Search this part on Amazon</a>
         </div>
       </div>
     </div>
@@ -632,6 +641,7 @@
     const query = [y, mk, md, part].filter(Boolean).join(' ');
     document.getElementById('searchResultQuery').textContent = query;
     document.getElementById('searchResultLink').href = 'https://www.advanceautoparts.com/search?searchTerm=' + encodeURIComponent(query);
+    document.getElementById('searchResultLinkAmazon').href = 'https://www.amazon.com/s?k=' + encodeURIComponent(query) + '&tag=honestridepar-20';
     empty.classList.add('hide');
     filled.classList.add('show');
   });
@@ -647,6 +657,7 @@
   const partName = document.getElementById('partName');
   const partReason = document.getElementById('partReason');
   const partsLink = document.getElementById('partsLink');
+  const partsLinkAmazon = document.getElementById('partsLinkAmazon');
   const ticketId = document.getElementById('ticketId');
 
   ticketId.textContent = '#' + Math.floor(1000 + Math.random()*9000);
@@ -700,6 +711,7 @@ PART_NEEDED: <specific part name>
     partName.textContent = part;
     partReason.textContent = 'Based on what you described, this is what Mike would order first.';
     partsLink.href = 'https://www.advanceautoparts.com/search?searchTerm=' + encodeURIComponent(part);
+    partsLinkAmazon.href = 'https://www.amazon.com/s?k=' + encodeURIComponent(part) + '&tag=honestridepar-20';
     ticketEmpty.classList.add('hide');
     ticketFilled.classList.add('show');
   }
@@ -809,4 +821,3 @@ PART_NEEDED: <specific part name>
 </script>
 </body>
 </html>
-<p>Impact-Site-Verification: b5a4b2de-4e70-4f85-bb40-bc7c69a93548</p>
