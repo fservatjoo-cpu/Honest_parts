@@ -193,6 +193,28 @@
   }
 
   /* Explore teaser cards */
+  /* Shop by category */
+  .category-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+  }
+  .category-card{
+    display:block;
+    text-align:center;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px 8px;
+    text-decoration:none;
+    color:var(--paper);
+    font-family:'Oswald',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.3px;
+  }
+  .category-card:hover{border-color:var(--accent);color:var(--accent);}
+
   .explore-row{
     display:flex;
     gap:10px;
@@ -523,6 +545,21 @@
   </section>
 
   <section>
+    <p class="section-label">SHOP BY CATEGORY</p>
+    <div class="category-grid">
+      <a class="category-card" href="https://www.amazon.com/s?k=brake+pads+rotors&tag=honestridepar-20" target="_blank" rel="noopener">Brakes</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=car+battery&tag=honestridepar-20" target="_blank" rel="noopener">Batteries</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=oil+air+filter+car&tag=honestridepar-20" target="_blank" rel="noopener">Filters</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=car+tires&tag=honestridepar-20" target="_blank" rel="noopener">Tires</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=headlight+bulbs+car&tag=honestridepar-20" target="_blank" rel="noopener">Lighting</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=motor+oil&tag=honestridepar-20" target="_blank" rel="noopener">Motor Oil</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=windshield+wiper+blades&tag=honestridepar-20" target="_blank" rel="noopener">Wiper Blades</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=spark+plugs&tag=honestridepar-20" target="_blank" rel="noopener">Spark Plugs</a>
+      <a class="category-card" href="https://www.amazon.com/s?k=serpentine+belt+hose&tag=honestridepar-20" target="_blank" rel="noopener">Belts &amp; Hoses</a>
+    </div>
+  </section>
+
+  <section>
     <p class="section-label">EXPLORE THE SITE</p>
     <div class="explore-row">
       <a class="explore-card" href="reviews.html">
@@ -572,7 +609,11 @@
     </div>
   </section>
 
-  <footer>Honest Ride Parts — real parts, real answers.<br>© 2026 Honest Ride Parts. All rights reserved.</footer>
+  <footer>
+    Honest Ride Parts — real parts, real answers.<br>
+    © 2026 Honest Ride Parts. All rights reserved.<br>
+    <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a> · <a href="terms.html" style="color:var(--muted);">Terms &amp; Conditions</a> · <a href="contact.html" style="color:var(--muted);">Contact</a>
+  </footer>
 
 </div>
 
