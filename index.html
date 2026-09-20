@@ -572,7 +572,7 @@
           <p class="search-result-label">SEARCHING FOR</p>
           <p class="search-result-query" id="searchResultQuery"></p>
           <a class="parts-link" id="searchResultLinkAmazon" href="#" target="_blank" rel="noopener">Search Amazon</a>
-          <a class="parts-link parts-link-secondary" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
+          <a class="parts-link parts-link-secondary" id="searchResultLinkEbay" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
         </div>
       </div>
     </div>
@@ -653,7 +653,7 @@
           <p class="part-name" id="partName"></p>
           <p class="part-reason" id="partReason"></p>
           <a class="parts-link" id="partsLinkAmazon" href="#" target="_blank" rel="noopener">Search this part on Amazon</a>
-          <a class="parts-link parts-link-secondary" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
+          <a class="parts-link parts-link-secondary" id="partsLinkEbay" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
         </div>
       </div>
     </div>
@@ -744,6 +744,7 @@
     const query = [y, mk, md, part].filter(Boolean).join(' ');
     document.getElementById('searchResultQuery').textContent = query;
     document.getElementById('searchResultLinkAmazon').href = 'https://www.amazon.com/s?k=' + encodeURIComponent(query) + '&tag=honestridepar-20';
+    document.getElementById('searchResultLinkEbay').href = 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(query) + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1';
     empty.classList.add('hide');
     filled.classList.add('show');
   });
@@ -759,6 +760,7 @@
   const partName = document.getElementById('partName');
   const partReason = document.getElementById('partReason');
   const partsLinkAmazon = document.getElementById('partsLinkAmazon');
+  const partsLinkEbay = document.getElementById('partsLinkEbay');
   const ticketId = document.getElementById('ticketId');
 
   ticketId.textContent = '#' + Math.floor(1000 + Math.random()*9000);
@@ -812,6 +814,7 @@ PART_NEEDED: <specific part name>
     partName.textContent = part;
     partReason.textContent = 'Based on what you described, this is what Mike would order first.';
     partsLinkAmazon.href = 'https://www.amazon.com/s?k=' + encodeURIComponent(part) + '&tag=honestridepar-20';
+    partsLinkEbay.href = 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(part) + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1';
     ticketEmpty.classList.add('hide');
     ticketFilled.classList.add('show');
   }
