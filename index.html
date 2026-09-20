@@ -852,8 +852,8 @@ PART_NEEDED: <specific part name>
     const url = 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(query) +
       '&LH_ItemCondition=3000' +
       '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1';
-    document.getElementById('usedPartsLink').href = url;
-    return true;
+    window.open(url, '_blank', 'noopener');
+    return false;
   }
 
     const div = document.createElement('div');
