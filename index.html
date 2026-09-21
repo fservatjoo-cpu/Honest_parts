@@ -639,6 +639,38 @@
     </div>
   </section>
 
+  <section id="mechanic">
+    <p class="section-label">STUCK? ASK MIKE</p>
+    <div class="chat-shell">
+      <div class="chat-log" id="chatLog"></div>
+      <div class="input-row">
+        <input id="textInput" type="text" placeholder="Tell Mike what's going on..." autocomplete="off">
+        <button class="icon-btn mic" id="micBtn" title="Talk to Mike" aria-label="Voice input">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        </button>
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+    </div>
+    <p class="mic-note" id="micNote"></p>
+
+    <div class="ticket">
+      <div class="ticket-inner">
+        <div class="ticket-head">
+          <h2>Work Order</h2>
+          <span class="ticket-id" id="ticketId">#—</span>
+        </div>
+        <p class="ticket-empty" id="ticketEmpty">Nothing diagnosed yet. Once Mike narrows down the problem, the part he'd order shows up here.</p>
+        <div class="ticket-filled" id="ticketFilled">
+          <div class="part-label">DIAGNOSIS POINTS TO</div>
+          <p class="part-name" id="partName"></p>
+          <p class="part-reason" id="partReason"></p>
+          <a class="parts-link" id="partsLinkAmazon" href="#" target="_blank" rel="noopener">Search this part on Amazon</a>
+          <a class="parts-link parts-link-secondary" id="partsLinkEbay" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <p class="section-label">REAL CARS. REAL PARTS.</p>
     <div class="gallery">
@@ -685,38 +717,6 @@
         <h3>About</h3>
         <p>Why "honest" is the whole point.</p>
       </a>
-    </div>
-  </section>
-
-  <section id="mechanic">
-    <p class="section-label">STUCK? ASK MIKE</p>
-    <div class="chat-shell">
-      <div class="chat-log" id="chatLog"></div>
-      <div class="input-row">
-        <input id="textInput" type="text" placeholder="Tell Mike what's going on..." autocomplete="off">
-        <button class="icon-btn mic" id="micBtn" title="Talk to Mike" aria-label="Voice input">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-        </button>
-        <button class="send-btn" id="sendBtn">Send</button>
-      </div>
-    </div>
-    <p class="mic-note" id="micNote"></p>
-
-    <div class="ticket">
-      <div class="ticket-inner">
-        <div class="ticket-head">
-          <h2>Work Order</h2>
-          <span class="ticket-id" id="ticketId">#—</span>
-        </div>
-        <p class="ticket-empty" id="ticketEmpty">Nothing diagnosed yet. Once Mike narrows down the problem, the part he'd order shows up here.</p>
-        <div class="ticket-filled" id="ticketFilled">
-          <div class="part-label">DIAGNOSIS POINTS TO</div>
-          <p class="part-name" id="partName"></p>
-          <p class="part-reason" id="partReason"></p>
-          <a class="parts-link" id="partsLinkAmazon" href="#" target="_blank" rel="noopener">Search this part on Amazon</a>
-          <a class="parts-link parts-link-secondary" id="partsLinkEbay" href="https://www.ebay.com/?mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Shop on eBay</a>
-        </div>
-      </div>
     </div>
   </section>
 
