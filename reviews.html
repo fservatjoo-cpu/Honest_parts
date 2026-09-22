@@ -62,6 +62,22 @@
     color:var(--muted);
   }
   .verdict strong{color:var(--paper);}
+  .review-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+  .review-link-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    padding:10px 16px;
+    border-radius:4px;
+    text-decoration:none;
+    background:var(--accent);
+    color:var(--paper);
+  }
+  .review-link-btn.secondary{
+    background:transparent;
+    border:1px solid var(--accent-dim);
+    color:var(--paper);
+  }
 
   footer{text-align:center;font-size:13px;color:var(--muted);margin-top:36px;}
 </style>
@@ -100,6 +116,10 @@
       </div>
       <p class="review-body">Ceramic pads run quieter and produce less brake dust than semi-metallic ones, but they usually cost more and can take a bit longer to warm up in cold weather. Semi-metallic pads handle heat better and cost less, at the price of more dust and noise. If you drive a lot in stop-and-go traffic, ceramic is usually the more comfortable daily choice.</p>
       <div class="verdict"><strong>Key trade-off:</strong> ceramic = quieter and cleaner, semi-metallic = tougher and cheaper.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=brake+pads&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=brake+pads&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
 
     <div class="review-card">
@@ -109,6 +129,10 @@
       </div>
       <p class="review-body">The biggest difference between filters is the housing — some are steel, some are a thinner composite. For a standard oil change interval, either works fine. If you're planning to stretch past the interval printed on the box, it's worth paying more for a filter rated for extended use.</p>
       <div class="verdict"><strong>Key trade-off:</strong> budget filters are fine for standard intervals, extended-life filters cost more but last longer.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=oil+filter&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=oil+filter&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
 
     <div class="review-card">
@@ -118,6 +142,10 @@
       </div>
       <p class="review-body">AGM (absorbed glass mat) batteries handle cold weather and heavy electrical loads better than standard flooded batteries, and they last longer overall — but they cost noticeably more up front. If your car sits outside in a cold climate or you run a lot of accessories, the extra cost tends to pay off over time.</p>
       <div class="verdict"><strong>Key trade-off:</strong> AGM = better cold performance and lifespan, flooded = lower upfront cost.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=car+battery&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=car+battery&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
 
     <div class="review-card">
@@ -127,6 +155,10 @@
       </div>
       <p class="review-body">All-season tires are a reasonable compromise for most climates, but they're not a substitute for real winter tires once you're getting regular snow and ice — the rubber compound and tread pattern are genuinely different for cold-weather grip. If winters are mild where you are, all-season is usually enough.</p>
       <div class="verdict"><strong>Key trade-off:</strong> all-season = one set, decent everywhere; dedicated winters = better grip in real snow.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=tires&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=tires&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
 
     <div class="review-card">
@@ -136,6 +168,10 @@
       </div>
       <p class="review-body">LED bulbs are brighter and whiter than the halogen bulbs most cars ship with, but fit varies a lot by vehicle — some housings need an adapter, and poor grounding can cause flickering. Check that a bulb is rated for your specific housing before buying, not just your car's year and model.</p>
       <div class="verdict"><strong>Key trade-off:</strong> LED = brighter, but fit and installation matter more than with halogens.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=headlight+bulbs&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=headlight+bulbs&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
 
     <div class="review-card">
@@ -145,6 +181,10 @@
       </div>
       <p class="review-body">Full-synthetic oil costs more per change than conventional oil, but it holds up better under heat and typically allows longer intervals between changes if your owner's manual permits it — which often evens out the cost over a year of driving. For an older engine or a car you're about to sell, conventional oil is usually good enough.</p>
       <div class="verdict"><strong>Key trade-off:</strong> synthetic = costs more per change but often needs fewer changes; conventional = cheaper per change.</div>
+      <div class="review-links">
+        <a class="review-link-btn" href="https://www.amazon.com/s?k=motor+oil&tag=honestridepar-20" target="_blank" rel="noopener">Search Amazon</a>
+        <a class="review-link-btn secondary" href="https://www.ebay.com/sch/i.html?_nkw=motor+oil&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1" target="_blank" rel="noopener sponsored">Search eBay</a>
+      </div>
     </div>
   </section>
 
