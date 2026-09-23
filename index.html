@@ -215,6 +215,26 @@
   }
   .category-card:hover{border-color:var(--accent);color:var(--accent);}
 
+  /* Brand cards */
+  .brand-card{
+    display:block;
+    text-align:center;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px 8px;
+    text-decoration:none;
+    color:var(--paper);
+  }
+  .brand-card:hover{border-color:var(--accent);}
+  .brand-card svg{width:22px;height:22px;stroke:var(--accent);margin-bottom:8px;}
+  .brand-card span{
+    display:block;
+    font-family:'Oswald',sans-serif;
+    font-size:13px;
+  }
+  .brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+
   /* Used parts finder */
   .used-parts-tile{
     display:block;
@@ -626,7 +646,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="usedParts">
     <p class="section-label">SAVE MONEY</p>
     <div class="used-parts-tile" onclick="document.getElementById('usedPartsBox').classList.toggle('open')">
       <h3>🔧 Need a Used Part?</h3>
@@ -636,6 +656,24 @@
       <input type="text" id="usedPartInput" placeholder="e.g. 2015 Honda Civic used alternator">
       <a class="parts-link" id="usedPartsLink" href="#" target="_blank" rel="noopener sponsored" onclick="return buildUsedPartsLink()">Search Used Parts on eBay</a>
       <p class="used-parts-note">Opens eBay, filtered to used-condition listings only.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">BRANDS WE COVER</p>
+    <div class="brand-grid">
+      <a class="brand-card" href="/?brand=Toyota#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Toyota</span></a>
+      <a class="brand-card" href="/?brand=Honda#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Honda</span></a>
+      <a class="brand-card" href="/?brand=Ford#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Ford</span></a>
+      <a class="brand-card" href="/?brand=Chevrolet#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Chevrolet</span></a>
+      <a class="brand-card" href="/?brand=BMW#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>BMW</span></a>
+      <a class="brand-card" href="/?brand=Mercedes-Benz#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Mercedes-Benz</span></a>
+      <a class="brand-card" href="/?brand=Audi#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Audi</span></a>
+      <a class="brand-card" href="/?brand=Volkswagen#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Volkswagen</span></a>
+      <a class="brand-card" href="/?brand=Nissan#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Nissan</span></a>
+      <a class="brand-card" href="/?brand=Hyundai#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Hyundai</span></a>
+      <a class="brand-card" href="/?brand=Kia#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Kia</span></a>
+      <a class="brand-card" href="/?brand=Jeep#usedParts"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Jeep</span></a>
     </div>
   </section>
 
@@ -995,6 +1033,18 @@ PART_NEEDED: <specific part name>
     micBtn.addEventListener('click', () => {
       micNote.textContent = 'Voice input needs Chrome or Edge on this device.';
     });
+  }
+  if (window.location.hash === '#usedParts') {
+    const box = document.getElementById('usedPartsBox');
+    box.classList.add('open');
+    const params = new URLSearchParams(window.location.search);
+    const brand = params.get('brand');
+    const input = document.getElementById('usedPartInput');
+    if (brand) input.value = brand + ' used parts';
+    setTimeout(() => {
+      document.getElementById('usedParts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      input.focus();
+    }, 300);
   }
 </script>
 </body>
