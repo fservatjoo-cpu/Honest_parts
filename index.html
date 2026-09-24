@@ -1036,6 +1036,12 @@ PART_NEEDED: <specific part name>
       micNote.textContent = 'Voice input needs Chrome or Edge on this device.';
     });
   }
+  if (window.location.hash === '#ask-mike' || window.location.hash === '#mechanic') {
+    setTimeout(() => {
+      document.getElementById('mechanic').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('textInput').focus();
+    }, 300);
+  }
   if (window.location.hash === '#usedParts') {
     const box = document.getElementById('usedPartsBox');
     box.classList.add('open');
