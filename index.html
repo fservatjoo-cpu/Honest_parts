@@ -836,6 +836,10 @@
     Other: ['Not listed']
   };
 
+  function partsGeekLink(q){
+    return 'https://www.jdoqocy.com/click-101881393-13699770?url=' + encodeURIComponent('https://www.partsgeek.com/ss/?i=1&ssq=' + encodeURIComponent(q));
+  }
+
   const makeSelect = document.getElementById('makeSelect');
   const modelSelect = document.getElementById('modelSelect');
   makeSelect.addEventListener('change', () => {
@@ -865,6 +869,7 @@
     document.getElementById('searchResultQuery').textContent = query;
     document.getElementById('searchResultLinkAmazon').href = 'https://www.amazon.com/s?k=' + encodeURIComponent(query) + '&tag=honestridepar-20';
     document.getElementById('searchResultLinkEbay').href = 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(query) + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1';
+    document.getElementById('searchResultLinkPartsGeek').href = partsGeekLink(query);
     empty.classList.add('hide');
     filled.classList.add('show');
   });
@@ -949,6 +954,7 @@ PART_NEEDED: <specific part name>
     partReason.textContent = 'Based on what you described, this is what Mike would order first.';
     partsLinkAmazon.href = 'https://www.amazon.com/s?k=' + encodeURIComponent(part) + '&tag=honestridepar-20';
     partsLinkEbay.href = 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(part) + '&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339211383&customid=&toolid=10001&mkevt=1';
+    document.getElementById('partsLinkPartsGeek').href = partsGeekLink(part);
     ticketEmpty.classList.add('hide');
     ticketFilled.classList.add('show');
   }
