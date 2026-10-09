@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find a Used Part | Honest Ride Parts</title>
+<meta name="description" content="Tell us your car and the part you need. We search used-parts sellers, check the fit with your VIN, and email you one honest price. Free to ask.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#1B1F22; --bg-panel:#23282B; --steel:#3E4C59;
+    --accent:#E8590C; --accent-dim:#B8480C; --paper:#F4EFE6;
+    --ink:#1B1F22; --muted:#8A9199; --line:#333B40;
+    --soft:#D6D0C5; --ok:#5FC08A; --warn:#F2B36B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg-deep);font-family:'IBM Plex Sans',sans-serif;color:var(--paper);font-size:16px;line-height:1.55;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 48px;}
+
+  header{padding:32px 16px 22px;text-align:center;border-bottom:2px solid var(--accent);}
+  .brand-row{display:flex;align-items:center;justify-content:center;gap:12px;}
+  .brand-row .car-icon{width:38px;height:38px;color:var(--accent);flex-shrink:0;}
+  header h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;letter-spacing:.5px;margin:0;}
+  header h1 a{color:inherit;text-decoration:none;}
+  header h1 span{color:var(--accent);}
+  header p{margin:8px 0 0;font-size:15.5px;color:var(--muted);letter-spacing:.3px;}
+  .site-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:16px;}
+  .site-nav a,.site-nav .nav-current{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--paper);text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent;}
+  .site-nav a:hover,.site-nav a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);}
+  .site-nav .nav-current{color:var(--accent);border-bottom-color:var(--accent);}
+  @media (max-width:480px){header h1{font-size:32px;}.brand-row .car-icon{width:30px;height:30px;}}
+
+  .section-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:1px;color:var(--accent);margin:0 0 6px;}
+  section{margin-top:30px;}
+
+  .intro h2{font-family:'Oswald',sans-serif;font-size:32px;line-height:1.2;margin:0 0 10px;}
+  .intro p{margin:0;color:var(--soft);max-width:36em;}
+
+  .steps{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;counter-reset:step;}
+  .steps li{background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;padding:14px 14px 16px;font-size:14.5px;color:var(--soft);counter-increment:step;}
+  .steps li::before{content:counter(step);display:block;font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px;}
+  .steps strong{display:block;color:var(--paper);font-weight:600;margin-bottom:2px;}
+
+  .panel{background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:22px 18px;}
+  .panel h3{font-family:'Oswald',sans-serif;font-size:22px;margin:0 0 4px;}
+  .panel .sub{margin:0 0 18px;color:var(--muted);font-size:14.5px;}
+  fieldset{border:0;padding:0;margin:0 0 6px;}
+  legend{font-family:'Oswald',sans-serif;font-size:17px;padding:0;margin:18px 0 10px;color:var(--paper);width:100%;border-top:1px dashed var(--line);padding-top:16px;}
+  fieldset:first-of-type legend{border-top:0;padding-top:0;margin-top:0;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .row.three{grid-template-columns:110px 1fr 1fr;}
+  @media (max-width:520px){.row,.row.three{grid-template-columns:1fr;}}
+  .field{margin-bottom:14px;min-width:0;}
+  label{display:block;font-size:14px;font-weight:600;margin:0 0 5px;}
+  label .opt{font-weight:400;color:var(--muted);}
+  input,select,textarea{width:100%;background:var(--bg-deep);color:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 12px;font-size:16px;font-family:inherit;}
+  textarea{min-height:92px;resize:vertical;}
+  input::placeholder,textarea::placeholder{color:#6B737B;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  #vin{font-family:'IBM Plex Mono',monospace;letter-spacing:1px;text-transform:uppercase;}
+  .hint{font-size:13px;color:var(--muted);margin:5px 0 0;}
+  .hint.bad{color:var(--warn);}
+  details{margin:6px 0 0;font-size:13.5px;color:var(--soft);}
+  summary{cursor:pointer;color:var(--accent);font-weight:500;}
+  details ul{margin:6px 0 0;padding-left:18px;}
+  .trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+  .send{display:block;width:100%;background:var(--accent);color:var(--paper);border:0;border-radius:6px;padding:14px;font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;margin-top:8px;}
+  .send:hover{background:var(--accent-dim);}
+  .send:disabled{background:var(--steel);cursor:default;}
+  .fine{font-size:13px;color:var(--muted);margin:10px 0 0;text-align:center;}
+  .fine a{color:var(--muted);}
+
+  .msg{border-radius:8px;padding:16px;margin-top:14px;font-size:15px;}
+  .msg h4{font-family:'Oswald',sans-serif;font-size:20px;margin:0 0 6px;}
+  .msg p{margin:0 0 8px;}
+  .msg p:last-child{margin-bottom:0;}
+  .msg.ok{background:rgba(95,192,138,.12);border:1px solid rgba(95,192,138,.5);}
+  .msg.problem{background:rgba(242,179,107,.1);border:1px solid rgba(242,179,107,.5);}
+  .msg a.btn{display:inline-block;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:600;padding:10px 16px;border-radius:6px;margin-top:4px;}
+  .ref{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--paper);}
+  [hidden]{display:none !important;}
+
+  .pay-grid{display:grid;grid-template-columns:1fr 150px;gap:12px;}
+  @media (max-width:520px){.pay-grid{grid-template-columns:1fr;}}
+  #paypal-buttons{margin-top:6px;background:var(--paper);border-radius:8px;padding:14px 14px 4px;}
+
+  dl{margin:0;}
+  dt{font-weight:600;margin-top:14px;}
+  dt:first-child{margin-top:0;}
+  dd{margin:2px 0 0;color:var(--soft);font-size:15px;}
+  .mike{margin:16px 0 0;font-size:15px;color:var(--soft);}
+  .mike a{color:var(--accent);}
+
+  footer{text-align:center;font-size:13px;color:var(--muted);margin-top:36px;}
+  footer a{color:var(--muted);}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand-row">
+      <svg class="car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13"></path>
+        <path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"></path>
+        <circle cx="7" cy="17.5" r="1.5"></circle>
+        <circle cx="17" cy="17.5" r="1.5"></circle>
+      </svg>
+      <h1><a href="index.html">HONEST RIDE <span>PARTS</span></a></h1>
+    </div>
+    <p>Real parts. Real diagnosis. No upsell, ever.</p>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <span class="nav-current">Used Parts</span>
+      <a href="reviews.html">Buyer's Guide</a>
+      <a href="guides.html">DIY Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <p class="section-label">USED PARTS FINDER</p>
+    <h2>Tell us the part. We'll find it and check that it fits.</h2>
+    <p>Hunting through salvage yards and listings takes hours, and one wrong part number means sending it back. Send us your car details and we do the searching for you. Asking is free.</p>
+
+    <ol class="steps">
+      <li><strong>You send the request</strong>Your car, your VIN, and the part you need.</li>
+      <li><strong>We search and check fit</strong>We look through used-parts sellers and match the part to your VIN.</li>
+      <li><strong>We email one price</strong>Part, shipping, and our fee in one total, with the warranty and delivery time.</li>
+      <li><strong>You decide</strong>Pay only if you like the quote. The part ships to your door.</li>
+    </ol>
+  </section>
+
+  <!-- ============================ REQUEST FORM ============================ -->
+  <section id="request">
+    <div class="panel">
+      <h3>Request a used part</h3>
+      <p class="sub">We reply by email within 2 business days. Fields marked "optional" can be left empty.</p>
+
+      <form id="partForm" action="https://formsubmit.co/hello@honestrideparts.com" method="POST">
+        <input type="hidden" name="_subject" id="subjectField" value="New used part request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://honestrideparts.com/used-parts.html?sent=1#request">
+        <input type="hidden" name="Request number" id="refField" value="">
+        <div class="trap" aria-hidden="true">
+          <label for="hp">Leave this empty</label>
+          <input type="text" id="hp" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset>
+          <legend>Your car</legend>
+          <div class="row three">
+            <div class="field">
+              <label for="year">Year</label>
+              <input id="year" name="Year" type="number" inputmode="numeric" min="1981" max="2027" placeholder="2015" required>
+            </div>
+            <div class="field">
+              <label for="make">Make</label>
+              <input id="make" name="Make" list="makes" placeholder="Honda" autocomplete="off" required>
+              <datalist id="makes">
+                <option value="Acura"><option value="Audi"><option value="BMW"><option value="Buick"><option value="Cadillac"><option value="Chevrolet"><option value="Chrysler"><option value="Dodge"><option value="Ford"><option value="GMC"><option value="Honda"><option value="Hyundai"><option value="Infiniti"><option value="Jeep"><option value="Kia"><option value="Lexus"><option value="Lincoln"><option value="Mazda"><option value="Mercedes-Benz"><option value="Mini"><option value="Mitsubishi"><option value="Nissan"><option value="Ram"><option value="Subaru"><option value="Tesla"><option value="Toyota"><option value="Volkswagen"><option value="Volvo">
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="model">Model</label>
+              <input id="model" name="Model" placeholder="Civic" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="trim">Trim or engine <span class="opt">(optional)</span></label>
+            <input id="trim" name="Trim or engine" placeholder="EX, 1.8L 4-cylinder">
+          </div>
+          <div class="field">
+            <label for="vin">VIN (17 characters)</label>
+            <input id="vin" name="VIN" maxlength="17" minlength="17" pattern="[A-HJ-NPR-Za-hj-npr-z0-9]{17}" placeholder="1HGFB2F5XFA012345" autocomplete="off" autocapitalize="characters" spellcheck="false" required aria-describedby="vinHint">
+            <p class="hint" id="vinHint">We use it to make sure the part fits your exact car.</p>
+            <details>
+              <summary>Where do I find my VIN?</summary>
+              <ul>
+                <li>On the dashboard, seen through the windshield on the driver's side</li>
+                <li>On the sticker inside the driver's door frame</li>
+                <li>On your registration or insurance card</li>
+              </ul>
+            </details>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The part</legend>
+          <div class="row">
+            <div class="field">
+              <label for="part">Part you need</label>
+              <input id="part" name="Part needed" placeholder="Alternator" required>
+            </div>
+            <div class="field">
+              <label for="ptype">Part type</label>
+              <select id="ptype" name="Part type" required>
+                <option value="">Choose one</option>
+                <option>Engine</option>
+                <option>Transmission and drivetrain</option>
+                <option>Electrical and sensors</option>
+                <option>Lights and mirrors</option>
+                <option>Body panels and bumpers</option>
+                <option>Doors, windows and glass</option>
+                <option>Interior and seats</option>
+                <option>Suspension and steering</option>
+                <option>Brakes</option>
+                <option>Wheels</option>
+                <option>Heating and A/C</option>
+                <option>Radio and screens</option>
+                <option>Not sure / other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pnum">Part number <span class="opt">(optional)</span></label>
+            <input id="pnum" name="Part number" placeholder="Printed on the old part, if you can read it">
+          </div>
+          <div class="field">
+            <label for="notes">Details <span class="opt">(optional)</span></label>
+            <textarea id="notes" name="Details" placeholder="Left or right side, color, what happened to the old part, your budget"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where we send the quote</legend>
+          <div class="row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="zip">ZIP code</label>
+              <input id="zip" name="ZIP code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="80237" title="5-digit US ZIP code" required>
+              <p class="hint">So we can work out shipping. US addresses only.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="opt">(optional)</span></label>
+              <input id="phone" name="Phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+        </fieldset>
+
+        <button class="send" type="submit" id="sendBtn">Send my request</button>
+        <p class="fine">Free to ask. You pay nothing unless you accept the quote. We use your details only to find your part and reply to you. <a href="privacy.html">Privacy Policy</a></p>
+      </form>
+
+      <div class="msg ok" id="sentMsg" role="status" hidden>
+        <h4>Request sent</h4>
+        <p id="sentRef"></p>
+        <p>We'll email you within 2 business days with a price, or to tell you we couldn't find the part. Check your spam folder if you don't see it.</p>
+      </div>
+
+      <div class="msg problem" id="failMsg" role="alert" hidden>
+        <h4>Your request didn't send</h4>
+        <p>Something went wrong on our side. Your details are still filled in. Send them by email instead:</p>
+        <p><a class="btn" id="mailLink" href="mailto:hello@honestrideparts.com">Send request by email</a></p>
+      </div>
+    </div>
+
+    <p class="mike">Not sure which part you need? <a href="index.html">Ask Mike, our AI mechanic</a>, before you send a request.</p>
+  </section>
+
+  <!-- ============================== PAYMENT ============================== -->
+  <section id="pay">
+    <p class="section-label">PAYMENT</p>
+    <div class="panel">
+      <h3>Paying for your part</h3>
+
+      <!-- Shown until a PayPal Client ID is added in the settings at the bottom of this file -->
+      <div id="payLater">
+        <p class="sub" style="margin-bottom:0;">You don't pay anything when you send a request. If you accept our quote, we email you a secure PayPal payment link. You can pay with a PayPal account or any credit or debit card.</p>
+      </div>
+
+      <!-- Shown automatically once a PayPal Client ID is added -->
+      <div id="payNow" hidden>
+        <p class="sub">Got a quote from us by email? Enter the quote number and the total from that email. Pay with PayPal or any credit or debit card.</p>
+        <div class="pay-grid">
+          <div class="field">
+            <label for="quoteNo">Quote number</label>
+            <input id="quoteNo" placeholder="HR-1007-4K2P" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="quoteAmt">Total (USD)</label>
+            <input id="quoteAmt" type="number" inputmode="decimal" min="1" max="5000" step="0.01" placeholder="169.00">
+          </div>
+        </div>
+        <p class="hint" id="payHint">Enter both to see the payment buttons.</p>
+        <div id="paypal-buttons" hidden></div>
+        <div class="msg ok" id="paidMsg" role="status" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ GOOD TO KNOW ============================ -->
+  <section>
+    <p class="section-label">GOOD TO KNOW</p>
+    <div class="panel">
+      <dl>
+        <dt>What does it cost?</dt>
+        <dd>Sending a request is free. The quote is one total price: the part, shipping to your ZIP code, sales tax, and our finder's fee. No extra charges after that.</dd>
+        <dt>What's in the quote?</dt>
+        <dd>The part's condition, mileage when we know it, the seller's warranty and return terms, and the delivery time. Read these before you pay, because they come from the seller and are different for each part.</dd>
+        <dt>How do you know it fits?</dt>
+        <dd>We match the part to your VIN before we quote. If we can't confirm the fit, we tell you and don't quote it.</dd>
+        <dt>Returns and refunds</dt>
+        <dd>If the part arrives defective or isn't the part we quoted, we arrange a replacement or a refund under the seller's warranty. If you change your mind, return shipping and any seller restocking fee come out of the refund. Refunds are sent once the seller receives the part back.</dd>
+        <dt>Warranty</dt>
+        <dd>Used-part warranties usually cover the part only, not labor. Many are valid only if the part is installed by a licensed mechanic, so a do-it-yourself install can void it. Your quote shows the exact warranty for your part.</dd>
+        <dt>What if you can't find it?</dt>
+        <dd>We email you to say so. You owe nothing.</dd>
+        <dt>Parts we don't source</dt>
+        <dd>Airbags, seat belt parts, and catalytic converters. For safety and legal reasons, buy these new from a parts store or dealer.</dd>
+        <dt>Questions?</dt>
+        <dd>Email <a href="mailto:hello@honestrideparts.com" style="color:var(--accent);">hello@honestrideparts.com</a>.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    Honest Ride Parts — real parts, real answers.<br>
+    <span style="display:block;margin:6px 0;">Independent site. As an Amazon Associate, I earn from qualifying purchases. I'm also an eBay Partner and earn from other partner links, at no extra cost to you.</span>
+    © 2026 Honest Ride Parts. All rights reserved.<br>
+    <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a> · <a href="contact.html">Contact</a>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   SETTINGS
+   REQUEST_EMAIL     where part requests are sent
+   PAYPAL_CLIENT_ID  paste your Live Client ID from developer.paypal.com
+                     to turn on the "pay your quote" box. Leave empty
+                     until you have it.
+   ===================================================================== */
+const REQUEST_EMAIL = "hello@honestrideparts.com";
+const PAYPAL_CLIENT_ID = "";
+/* ===================================================================== */
+
+const $ = id => document.getElementById(id);
+const form = $("partForm");
+
+/* ---------- VIN: capitals only, friendly message ---------- */
+const vin = $("vin"), vinHint = $("vinHint");
+vin.addEventListener("input", () => {
+  vin.value = vin.value.toUpperCase().replace(/\s/g, "");
+  vin.setCustomValidity("");
+  vinHint.textContent = "We use it to make sure the part fits your exact car.";
+  vinHint.classList.remove("bad");
+});
+function checkVin(){
+  const v = vin.value;
+  let problem = "";
+  if (v.length !== 17) problem = `A VIN has 17 characters. This one has ${v.length}.`;
+  else if (/[IOQ]/.test(v)) problem = "A VIN never contains the letters I, O or Q. Check for a 1 or a 0 instead.";
+  else if (!/^[A-HJ-NPR-Z0-9]{17}$/.test(v)) problem = "A VIN uses only letters and numbers.";
+  vin.setCustomValidity(problem);
+  if (problem){ vinHint.textContent = problem; vinHint.classList.add("bad"); }
+  return !problem;
+}
+vin.addEventListener("blur", () => { if (vin.value) checkVin(); });
+
+/* ---------- Request number, e.g. HR-1007-4K2P ---------- */
+function makeRef(){
+  const d = new Date();
+  const mmdd = String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0");
+  const chars = "ABCDEFGHJKLMNPRSTUVWXYZ23456789";
+  let tail = "";
+  for (let i = 0; i < 4; i++) tail += chars[Math.floor(Math.random() * chars.length)];
+  return `HR-${mmdd}-${tail}`;
+}
+
+function showSent(ref){
+  form.hidden = true;
+  $("failMsg").hidden = true;
+  $("sentRef").innerHTML = ref ? `Your request number is <span class="ref"></span>. Keep it for your records.` : "Thank you. We have your request.";
+  if (ref) $("sentRef").querySelector(".ref").textContent = ref;
+  $("sentMsg").hidden = false;
+  $("sentMsg").scrollIntoView({ block: "center" });
+}
+
+function showFail(data){
+  const lines = Object.entries(data)
+    .filter(([k, v]) => !k.startsWith("_") && v)
+    .map(([k, v]) => `${k === "email" ? "Email" : k}: ${v}`);
+  const subject = data._subject || "Used part request";
+  $("mailLink").href = `mailto:${REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  $("failMsg").hidden = false;
+  $("failMsg").scrollIntoView({ block: "center" });
+}
+
+/* ---------- Send the request ---------- */
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  checkVin();
+  if (!form.checkValidity()){ form.reportValidity(); return; }
+
+  const ref = makeRef();
+  $("refField").value = ref;
+  $("subjectField").value = `Used part request ${ref}: ${$("year").value} ${$("make").value} ${$("model").value}, ${$("part").value}`;
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  // Spam bots fill the hidden field. Real people never see it.
+  if (data._honey){ showSent(ref); return; }
+
+  const btn = $("sendBtn");
+  btn.disabled = true; btn.textContent = "Sending…";
+  $("failMsg").hidden = true;
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${REQUEST_EMAIL}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || String(out.success) !== "true") throw new Error("not sent");
+    showSent(ref);
+  } catch (err) {
+    showFail(data);
+  } finally {
+    btn.disabled = false; btn.textContent = "Send my request";
+  }
+});
+
+// If the browser sent the form without JavaScript, the service returns here with ?sent=1
+if (new URLSearchParams(location.search).get("sent") === "1") showSent("");
+
+/* ---------- Pay a quote with PayPal (also takes cards) ---------- */
+if (PAYPAL_CLIENT_ID){
+  $("payLater").hidden = true;
+  $("payNow").hidden = false;
+  const no = $("quoteNo"), amt = $("quoteAmt"), hint = $("payHint"), box = $("paypal-buttons");
+  let rendered = false;
+
+  const amount = () => {
+    const n = Math.round(parseFloat(amt.value) * 100) / 100;
+    return n >= 1 && n <= 5000 ? n : 0;
+  };
+  const ready = () => no.value.trim().length >= 4 && amount() > 0;
+
+  function refresh(){
+    if (!ready()){ box.hidden = true; hint.hidden = false; hint.textContent = "Enter both to see the payment buttons."; return; }
+    hint.textContent = `You're paying $${amount().toFixed(2)} for quote ${no.value.trim().toUpperCase()}.`;
+    box.hidden = false;
+    if (rendered) return;
+    rendered = true;
+    const s = document.createElement("script");
+    s.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(PAYPAL_CLIENT_ID) + "&currency=USD";
+    s.onload = () => paypal.Buttons({
+      style: { layout: "vertical", shape: "rect" },
+      onClick: (data, actions) => ready() ? actions.resolve() : actions.reject(),
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{
+          description: ("Used part, quote " + no.value.trim().toUpperCase()).slice(0, 127),
+          custom_id: no.value.trim().toUpperCase().slice(0, 127),
+          amount: { currency_code: "USD", value: amount().toFixed(2) }
+        }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(() => {
+        box.hidden = true; hint.hidden = true;
+        $("paidMsg").innerHTML = "<h4>Payment received</h4><p>Thank you. We'll order your part and email you the tracking number.</p>";
+        $("paidMsg").hidden = false;
+      }),
+      onError: () => { hint.textContent = "The payment didn't go through. Try again, or email " + REQUEST_EMAIL + "."; hint.classList.add("bad"); }
+    }).render("#paypal-buttons");
+    s.onerror = () => { rendered = false; box.hidden = true; hint.textContent = "Payment couldn't load. Refresh the page, or email " + REQUEST_EMAIL + "."; hint.classList.add("bad"); };
+    document.head.appendChild(s);
+  }
+  no.addEventListener("input", refresh);
+  amt.addEventListener("input", refresh);
+}
+</script>
+</body>
+</html>
