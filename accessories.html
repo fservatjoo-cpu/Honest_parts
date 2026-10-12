@@ -37,7 +37,9 @@
   .intro p{margin:0;color:var(--soft);max-width:38em;}
   .note{font-size:13.5px;color:var(--muted);margin:12px 0 0;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-top:22px;}
-  .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+  .card{background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:20px;}
+  .card:target{border-color:#E8590C;box-shadow:0 0 0 3px rgba(232,89,12,.45);}
+  html{scroll-behavior:smooth;}
   .card img{width:100%;height:auto;aspect-ratio:6/7;object-fit:cover;display:block;}
   .body{padding:14px 14px 16px;display:flex;flex-direction:column;flex:1;}
   .card h3{font-family:'Oswald',sans-serif;font-size:20px;margin:0 0 6px;}
@@ -82,7 +84,7 @@
   </section>
 
   <div class="grid">
-    <article class="card">
+    <article class="card" id="organizers">
       <img src="acc-backseat-organizers.jpg" alt="Illustration of four backseat organizer styles: PU leather, fabric, kids tray, and leather dual" loading="lazy" width="600" height="700">
       <div class="body">
         <h3>Backseat Organizers</h3>
@@ -93,7 +95,7 @@
         </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card" id="bling">
       <img src="acc-bling-sets.jpg" alt="Illustration of bling interior sets: steering wheel covers, accents and seat covers" loading="lazy" width="600" height="700">
       <div class="body">
         <h3>Bling Interior Sets</h3>
@@ -104,7 +106,7 @@
         </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card" id="phone-mounts">
       <img src="acc-magnetic-phone-mount.jpg" alt="Illustration of a magnetic phone mount" loading="lazy" width="600" height="700">
       <div class="body">
         <h3>Phone Mounts</h3>
@@ -115,7 +117,7 @@
         </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card" id="sun-shades">
       <img src="acc-windshield-shades.jpg" alt="Illustration of windshield and window sun shades" loading="lazy" width="600" height="700">
       <div class="body">
         <h3>Windshield Sun Shades</h3>
@@ -126,7 +128,7 @@
         </div>
       </div>
     </article>
-    <article class="card">
+    <article class="card" id="radar">
       <img src="acc-radar-detector.jpg" alt="Illustration of a radar detector mounted on a windshield" loading="lazy" width="600" height="700">
       <div class="body">
         <h3>Uniden R3 Radar Detector</h3>
