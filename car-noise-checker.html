@@ -55,7 +55,7 @@ h1 span{color:var(--accent)}
 .opt[aria-pressed="true"] svg path{stroke:var(--accent)}
 .when{display:flex;flex-wrap:wrap;gap:8px}
 .when .opt{flex-direction:row;padding:9px 14px;border-radius:999px;font-weight:600;font-size:15px}
-.readout{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.readout{scroll-margin-top:16px;background:var(--panel);border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
 .rhead{padding:20px 22px 16px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
 .code{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
 .rhead h3{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
@@ -232,18 +232,20 @@ const URG={stop:"Stop and check now",soon:"Get it checked soon",watch:"Watch it"
 let st={s:"grinding",w:"braking"};
 try{const v=JSON.parse(localStorage.getItem("noisePick")||"null");if(v&&SOUNDS[v.s]&&WHENS[v.w])st=v}catch(e){}
 
+function fromHash(){const h=location.hash.slice(1).split("-");if(SOUNDS[h[0]]&&WHENS[h[1]]){st={s:h[0],w:h[1]};return true}return false}
+const jump=fromHash();
 const sEl=document.getElementById("sounds"),wEl=document.getElementById("whens"),rEl=document.getElementById("readout");
 for(const[k,v]of Object.entries(SOUNDS)){
   const b=document.createElement("button");b.className="opt";b.id="s-"+k;b.dataset.k=k;
   b.innerHTML=`<svg viewBox="0 0 90 26" aria-hidden="true" preserveAspectRatio="none"><path d="${v.wave}"/></svg><strong>${v.label}</strong><small>${v.desc}</small>`;
-  b.onclick=()=>{st.s=k;render()};sEl.appendChild(b);
+  b.onclick=()=>{st.s=k;render(true)};sEl.appendChild(b);
 }
 for(const[k,v]of Object.entries(WHENS)){
   const b=document.createElement("button");b.className="opt";b.id="w-"+k;b.dataset.k=k;b.textContent=v;
-  b.onclick=()=>{st.w=k;render()};wEl.appendChild(b);
+  b.onclick=()=>{st.w=k;render(true)};wEl.appendChild(b);
 }
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-function render(){
+function render(user){
   sEl.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===st.s));
   wEl.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===st.w));
   const d=D[st.s+"|"+st.w]||FALLBACK[st.s];
@@ -252,8 +254,11 @@ function render(){
   <div class="parts"><span class="l">Parts often involved</span>${d.p.map(p=>`<span class="p">${esc(p)}</span>`).join("")}</div>`;
   rEl.classList.remove("flash");void rEl.offsetWidth;rEl.classList.add("flash");
   try{localStorage.setItem("noisePick",JSON.stringify(st))}catch(e){}
+  if(user){try{history.replaceState(null,"","#"+st.s+"-"+st.w)}catch(e){}}
 }
 render();
+if(jump){setTimeout(()=>document.getElementById("readout").scrollIntoView({block:"start"}),50)}
+window.addEventListener("hashchange",()=>{if(fromHash()){render();document.getElementById("readout").scrollIntoView({block:"start"})}});
 </script>
 
 </body>
