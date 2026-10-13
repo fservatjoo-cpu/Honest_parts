@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's That Noise? Free Car Noise Checker | Honest Ride Parts</title>
+<meta name="description" content="Grinding, squealing, clunking, or humming? Pick the sound your car makes and when it happens to see the likely causes, a quick check, and how urgent it is. Free.">
+<link rel="canonical" href="https://honestrideparts.com/car-noise-checker.html">
+<meta property="og:title" content="What's That Noise? Free Car Noise Checker">
+<meta property="og:description" content="Pick the sound your car makes and see the likely causes in seconds.">
+<meta property="og:url" content="https://honestrideparts.com/car-noise-checker.html">
+<meta property="og:type" content="website">
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: shop-manual diagnostic card — two-step picker on top, readout panel below */
+:root{
+  --bg:#eef1f4; --panel:#ffffff; --ink:#16202b; --muted:#5a6878; --line:#d5dce4;
+  --accent:#e8710a; --accent-ink:#ffffff; --chip:#e3e8ee;
+  --stop:#c62f2f; --soon:#c98a00; --watch:#2f7d5b;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161c; --panel:#19212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2b3642;
+  --accent:#ff8a2a; --accent-ink:#1a0e02; --chip:#222c37;
+  --stop:#ff6b6b; --soon:#f2b632; --watch:#5cc493; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161c; --panel:#19212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2b3642;
+  --accent:#ff8a2a; --accent-ink:#1a0e02; --chip:#222c37;
+  --stop:#ff6b6b; --soon:#f2b632; --watch:#5cc493; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+.wrap{max-width:860px;margin:0 auto;padding-inline:18px;padding-block:32px 48px;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px}
+.brand{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,9vw,76px);line-height:.95;margin:0;letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.step{display:flex;flex-direction:column;gap:12px}
+.step h2{font-family:var(--display);font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.04em;margin:0;display:flex;gap:10px;align-items:baseline}
+.step h2 b{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.opt{font:inherit;color:var(--ink);background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;cursor:pointer;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--muted)}
+.opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt strong{font-weight:700;font-size:16px}
+.opt small{color:var(--muted);font-size:13.5px;line-height:1.3}
+.opt svg{width:100%;height:26px;display:block}
+.opt svg path{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.opt[aria-pressed="true"] svg path{stroke:var(--accent)}
+.when{display:flex;flex-wrap:wrap;gap:8px}
+.when .opt{flex-direction:row;padding:9px 14px;border-radius:999px;font-weight:600;font-size:15px}
+.readout{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.rhead{padding:20px 22px 16px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
+.code{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.rhead h3{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1.5px solid currentColor}
+.pill.stop{color:var(--stop)} .pill.soon{color:var(--soon)} .pill.watch{color:var(--watch)}
+.causes{list-style:none;margin:0;padding:0}
+.causes li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding:16px 22px;border-bottom:1px solid var(--line)}
+.causes .n{font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:3px}
+.causes h4{margin:0 0 2px;font-size:17px}
+.causes p{margin:0;color:var(--muted);font-size:15.5px}
+.causes .check{display:block;margin-top:6px;color:var(--ink);font-size:15px}
+.causes .check::before{content:"Quick check: ";font-weight:700}
+.parts{padding:16px 22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.parts span.l{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.parts span.p{background:var(--chip);border-radius:6px;padding:4px 10px;font-size:14px;font-weight:600}
+.mike{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border-radius:14px;padding:22px}
+.mike p{margin:0;max-width:46ch}
+.mike strong{font-family:var(--display);font-size:26px;text-transform:uppercase;display:block;line-height:1.1}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;text-decoration:none;padding:12px 20px;border-radius:999px}
+.btn:focus-visible{outline:3px solid var(--bg);outline-offset:3px}
+.case{border-left:3px solid var(--accent);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:4px}
+.case .code{text-transform:uppercase}
+.case p{margin:0}
+.fine{font-size:13.5px;color:var(--muted);margin:0}
+@media (prefers-reduced-motion:no-preference){.readout.flash{animation:f .35s ease-out}@keyframes f{from{transform:translateY(4px);opacity:.6}to{transform:none;opacity:1}}}
+</style>
+<style>
+.topnav{display:flex;flex-wrap:wrap;gap:16px;font-weight:600}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a:hover{color:var(--accent)}
+.guide{display:flex;flex-direction:column;gap:14px}
+.guide h2{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;margin:0}
+.guide h3{margin:0;font-size:18px}
+.guide p{margin:0;color:var(--muted);max-width:65ch}
+.guide div{display:flex;flex-direction:column;gap:4px}
+</style>
+</head>
+<body>
+<div class="wrap" style="padding-block:18px 0"><nav class="topnav" aria-label="Main"><a href="https://honestrideparts.com/">Home</a><a href="https://honestrideparts.com/used-parts.html">Used Parts</a><a href="https://honestrideparts.com/guides.html">DIY Guides</a><a href="https://honestrideparts.com/#ask-mike">Ask Mike</a></nav></div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">Honest Ride Parts · Free tool</div>
+    <h1>What's that <span>noise?</span></h1>
+    <p class="lede">Pick the sound your car makes and when it happens. You'll get the most likely causes, a quick check you can do yourself, and how urgent it is.</p>
+  </header>
+
+  <section class="step">
+    <h2><b>01</b>What does it sound like?</h2>
+    <div class="grid" id="sounds"></div>
+  </section>
+
+  <section class="step">
+    <h2><b>02</b>When do you hear it?</h2>
+    <div class="when" id="whens"></div>
+  </section>
+
+  <section class="readout" id="readout" aria-live="polite"></section>
+
+  <div class="mike">
+    <p><strong>Still not sure? Ask Mike.</strong>Our free AI mechanic asks follow-up questions about your exact car and helps you narrow it down.</p>
+    <a class="btn" href="https://honestrideparts.com/#ask-mike" target="_blank" rel="noopener">Talk to Mike, free</a>
+  </div>
+
+  <div class="case">
+    <span class="code">Real case</span>
+    <p>A driver felt a vibration at 65 mph through the driver's door. Two shop visits rebalanced the tires. The third found the cause: poor sealant on the front door assembly. If balancing doesn't fix a vibration, look beyond the wheels.</p>
+  </div>
+
+
+  <section class="guide">
+    <h2>Common car noises and what they mean</h2>
+    <div><h3>Grinding when braking</h3><p>Usually brake pads worn down to the metal, a small rock caught near the rotor, or a bent dust shield. Have it checked right away.</p></div>
+    <div><h3>Squealing when braking</h3><p>Often the pad wear indicator telling you the pads are getting thin. It can also come from glazed pads or missing shims after a brake job.</p></div>
+    <div><h3>Squealing when starting or speeding up</h3><p>Most often a worn or loose serpentine belt, or a weak belt tensioner.</p></div>
+    <div><h3>Clunking over bumps</h3><p>Worn sway bar links are the most common cause. Struts, strut mounts, and ball joints are next.</p></div>
+    <div><h3>Clicking when turning</h3><p>Fast clicking in sharp turns is the classic sign of a worn outer CV joint.</p></div>
+    <div><h3>Humming that gets louder with speed</h3><p>Usually a wheel bearing, especially if the sound changes when you turn. Cupped tires can sound similar.</p></div>
+    <div><h3>Shaking at highway speed</h3><p>Most often tire balance or a bent wheel. If balancing doesn't help, check other sources like door seals or exhaust hangers.</p></div>
+  </section>
+
+  <p class="fine">This is a guide, not a diagnosis. If the brake pedal feels soft, sinks to the floor, or the car pulls hard when braking, stop driving and have it towed or inspected.</p>
+</div>
+
+<script>
+const SOUNDS={
+  grinding:{label:"Grinding",desc:"Metal on metal, harsh",wave:"M0 13 L6 5 L9 20 L13 4 L16 22 L20 6 L23 19 L27 3 L30 21 L34 7 L37 18 L41 4 L44 22 L48 6 L51 20 L55 5 L58 19 L62 8 L65 21 L69 4 L72 20 L76 6 L79 18 L83 5 L86 21 L90 13"},
+  squeal:{label:"Squealing",desc:"High-pitched, sharp",wave:"M0 13 L3 4 L6 22 L9 4 L12 22 L15 4 L18 22 L21 4 L24 22 L27 4 L30 22 L33 4 L36 22 L39 4 L42 22 L45 4 L48 22 L51 4 L54 22 L57 4 L60 22 L63 4 L66 22 L69 4 L72 22 L75 4 L78 22 L81 4 L84 22 L87 4 L90 13"},
+  clunk:{label:"Clunking",desc:"Single heavy knock",wave:"M0 13 L20 13 L23 2 L27 24 L31 8 L34 16 L37 13 L60 13 L63 2 L67 24 L71 8 L74 16 L77 13 L90 13"},
+  hum:{label:"Humming / roaring",desc:"Low drone, like wind",wave:"M0 13 C8 3 14 3 22 13 S36 23 45 13 S59 3 67 13 S82 23 90 13"},
+  click:{label:"Clicking",desc:"Fast, repeating ticks",wave:"M0 13 L10 13 L11 4 L12 13 L25 13 L26 4 L27 13 L40 13 L41 4 L42 13 L55 13 L56 4 L57 13 L70 13 L71 4 L72 13 L85 13 L86 4 L87 13 L90 13"},
+  shake:{label:"Vibration / shake",desc:"Felt more than heard",wave:"M0 13 C4 8 8 8 12 13 S20 18 24 13 S32 8 36 13 S44 18 48 13 S56 8 60 13 S68 18 72 13 S80 8 84 13 S88 16 90 13"}
+};
+const WHENS={braking:"When braking",turning:"When turning",accel:"When speeding up",bumps:"Over bumps",speed:"At a certain speed",always:"All the time"};
+
+const D={
+ "grinding|braking":{t:"Brakes grinding when you stop",u:"stop",c:[
+  ["Pads worn to the metal","The pad material is gone and the steel backing plate is cutting into the rotor.","Look through the wheel spokes. Less than 3 mm (about 1/8 inch) of pad means replace now."],
+  ["Rock or debris stuck by the rotor","A small stone caught between the rotor and dust shield grinds even with new brakes.","Back up slowly a few feet. If the noise suddenly stops or changes, debris is likely."],
+  ["Bent dust shield","The thin metal shield behind the rotor bends easily during a brake job and scrapes.","With the wheel off, check for shiny scrape marks on the shield's edge."]],
+  p:["Brake pads","Rotors","Hardware/clip kit"]},
+ "grinding|turning":{t:"Grinding when you turn",u:"soon",c:[
+  ["Wheel bearing wearing out","A failing bearing grinds or growls, louder when weight shifts to that side.","On an empty road, swerve gently left and right. If the noise gets louder one way, suspect the opposite bearing."],
+  ["Dust shield rubbing","A bent shield may only touch the rotor when the wheel loads up in a turn.","Look for a bright scrape line on the shield behind the rotor."],
+  ["Low power steering fluid","A pump running low can grind or whine when you turn the wheel.","Check the reservoir level with the engine off."]],
+  p:["Wheel bearing / hub","Dust shield","Power steering fluid"]},
+ "grinding|accel":{t:"Grinding when speeding up",u:"soon",c:[
+  ["Transmission problem","Worn gears or low fluid can grind, especially during shifts.","Check transmission fluid if your car has a dipstick. Dark or burnt-smelling fluid is a warning."],
+  ["CV joint failing","A worn axle joint can grind under power.","Look behind the front wheels for a torn rubber boot spraying grease."],
+  ["Differential wear","Rear-drive and AWD cars can grind from low gear oil.","Look for oil drips under the rear axle."]],
+  p:["Transmission fluid","CV axle","Gear oil"]},
+ "squeal|braking":{t:"Squealing when you brake",u:"watch",c:[
+  ["Wear indicator touching","A small metal tab on the pad squeals on purpose when the pad is getting thin.","Check pad thickness. If it's thin, plan new pads within a few weeks."],
+  ["Glazed pads or rotors","Hard braking can leave a shiny, slick surface that squeals.","A mirror-shiny rotor surface with no wear pattern points to glazing."],
+  ["Missing shims or grease","After a brake job, skipped anti-squeal shims or lubrication cause noise.","Look at the back of the pads for shims and at the clips for grease."]],
+  p:["Brake pads","Shims","Brake lubricant"]},
+ "squeal|accel":{t:"Squealing when speeding up",u:"soon",c:[
+  ["Serpentine belt slipping","A worn or loose belt squeals when the engine revs up.","With the engine off, look for cracks or a shiny, glazed belt surface."],
+  ["Belt tensioner weak","A tired tensioner lets the belt slip.","Watch the tensioner arm with the engine running. A shaking arm is a bad sign."]],
+  p:["Serpentine belt","Belt tensioner"]},
+ "squeal|turning":{t:"Squealing when you turn",u:"soon",c:[
+  ["Power steering belt or fluid","Turning the wheel loads the pump, and a slipping belt or low fluid squeals.","Check the fluid level, then the belt condition."],
+  ["Tires scrubbing","Low tire pressure or a sharp turn in a parking garage makes tires squeal.","Check all four tire pressures against the sticker in the door jamb."]],
+  p:["Power steering fluid","Drive belt"]},
+ "clunk|bumps":{t:"Clunking over bumps",u:"soon",c:[
+  ["Sway bar links worn","The most common clunk. Small, cheap links connect the sway bar to the suspension.","With the car parked, grab the link and shake it. Any play means it's worn."],
+  ["Strut mounts or struts","Worn mounts knock over bumps and potholes.","Push down hard on each corner. More than one bounce back means tired struts."],
+  ["Ball joints","Worn ball joints clunk and can be dangerous if they separate.","Have a shop check for play with the wheel lifted. Don't wait on this one."]],
+  p:["Sway bar links","Strut assembly","Ball joints"]},
+ "clunk|turning":{t:"Clunking when you turn",u:"soon",c:[
+  ["Tie rod end","Worn tie rods knock and make steering feel loose.","With the wheel off the ground, shake the tire at 3 and 9 o'clock. Play means a tie rod."],
+  ["Strut mount bearing","A worn upper mount clunks when you turn the wheel at low speed.","Turn the wheel while parked and listen near the top of the strut."]],
+  p:["Tie rod ends","Strut mounts"]},
+ "clunk|braking":{t:"Clunking when you brake",u:"stop",c:[
+  ["Loose caliper","A missing or loose caliper bolt lets the caliper shift and knock.","Check the caliper bolts right away, especially after a recent brake job."],
+  ["Control arm bushings","Worn bushings let the wheel move forward under braking.","Look for cracked or torn rubber where the control arm meets the frame."]],
+  p:["Caliper bolts","Control arm"]},
+ "hum|speed":{t:"Humming that grows with speed",u:"soon",c:[
+  ["Wheel bearing","The classic sign is a hum that rises with speed and changes when you turn.","Swerve gently left and right. If the hum changes, it's likely a bearing."],
+  ["Uneven tire wear","Cupped or choppy tires drone at highway speed.","Run your hand over the tread. A wavy, saw-tooth feel means cupping."]],
+  p:["Wheel bearing / hub","Tires"]},
+ "hum|accel":{t:"Humming when speeding up",u:"soon",c:[
+  ["Differential","Low gear oil or worn gears hum under power.","Check for leaks at the differential."],
+  ["Wheel bearing","A bearing hum often shows up first under load.","Do the gentle swerve test on an empty road."]],
+  p:["Gear oil","Wheel bearing"]},
+ "click|turning":{t:"Clicking when you turn",u:"soon",c:[
+  ["Outer CV joint worn","Fast clicking during sharp turns is the textbook CV joint sign.","Make a slow, tight circle in an empty lot. Clicking on one side points to that axle."],
+  ["Torn CV boot","A torn boot lets grease out and dirt in, which ruins the joint.","Look behind the front wheel for grease sprayed around the inside of the rim."]],
+  p:["CV axle","CV boot kit"]},
+ "click|always":{t:"Ticking all the time",u:"soon",c:[
+  ["Low engine oil","Low oil can make the top of the engine tick.","Check the dipstick on level ground with the engine off."],
+  ["Valve lifter noise","Lifters tick when oil is old or the wrong type.","Note if the tick follows engine speed, not road speed."],
+  ["Something in the tire","A nail or stone in the tread clicks with every turn of the wheel.","Look over each tire's tread."]],
+  p:["Engine oil","Oil filter"]},
+ "shake|speed":{t:"Shaking at a certain speed",u:"watch",c:[
+  ["Tire balance","A shake around 55–70 mph is most often an unbalanced wheel.","Ask for a road-force balance if a normal balance didn't fix it."],
+  ["Bent wheel or damaged tire","A pothole can bend a rim or bulge a tire.","Look for bulges on the sidewall and dents on the rim edge."],
+  ["Not the wheels at all","Door seals, loose trim, and exhaust hangers can vibrate too.","If balancing didn't help, feel where the vibration is strongest: seat, wheel, or door."]],
+  p:["Tires","Wheel weights"]},
+ "shake|braking":{t:"Shaking when you brake",u:"soon",c:[
+  ["Uneven rotor surface","Pad material deposits or worn rotors cause pulsing in the pedal or wheel.","Feel the brake pedal. A pulse when stopping from highway speed points to the rotors."],
+  ["Sticking caliper","A caliper that won't release overheats one rotor.","After a drive, carefully hold your hand near each wheel. One much hotter wheel is a clue."]],
+  p:["Rotors","Brake pads","Caliper"]}
+};
+const FALLBACK={
+ grinding:{t:"Grinding noise",u:"soon",c:[["Brake parts","Most grinding comes from the brakes, even when you aren't braking.","Check pad thickness and look for debris near the rotor."],["Wheel bearing","Bearings grind as they fail.","Try the gentle swerve test on an empty road."]],p:["Brake pads","Wheel bearing"]},
+ squeal:{t:"Squealing noise",u:"watch",c:[["Drive belt","Belts squeal most on cold starts and in wet weather.","Look for cracks or glazing on the belt."],["Brake wear indicator","Some indicators squeal even without pressing the pedal.","Check pad thickness."]],p:["Serpentine belt","Brake pads"]},
+ clunk:{t:"Clunking noise",u:"soon",c:[["Suspension links","Worn links and bushings knock as weight shifts.","Shake the sway bar links by hand while parked."],["Exhaust hanger","A broken hanger lets the exhaust bang underneath.","Push the tailpipe gently. It should not swing freely."]],p:["Sway bar links","Exhaust hangers"]},
+ hum:{t:"Humming noise",u:"soon",c:[["Wheel bearing","The most common source of a hum or roar.","Listen for changes when swerving gently."],["Tires","Some tread patterns and worn tires hum.","Check the tread for uneven wear."]],p:["Wheel bearing","Tires"]},
+ click:{t:"Clicking noise",u:"watch",c:[["CV joint","Clicking from the front wheels often points here.","Check for a torn boot behind the wheel."],["Debris in the tread","A stone or nail clicks once per wheel turn.","Inspect each tire."]],p:["CV axle"]},
+ shake:{t:"Vibration",u:"watch",c:[["Wheels and tires","Balance, bent rims, and tire damage cause most vibrations.","Note the speed where it's worst."],["Engine or motor mounts","Worn mounts send shake into the cabin, often at idle.","Watch the engine while someone shifts from park to drive with the brake held."]],p:["Tires","Engine mounts"]}
+};
+const URG={stop:"Stop and check now",soon:"Get it checked soon",watch:"Watch it"};
+let st={s:"grinding",w:"braking"};
+try{const v=JSON.parse(localStorage.getItem("noisePick")||"null");if(v&&SOUNDS[v.s]&&WHENS[v.w])st=v}catch(e){}
+
+const sEl=document.getElementById("sounds"),wEl=document.getElementById("whens"),rEl=document.getElementById("readout");
+for(const[k,v]of Object.entries(SOUNDS)){
+  const b=document.createElement("button");b.className="opt";b.id="s-"+k;b.dataset.k=k;
+  b.innerHTML=`<svg viewBox="0 0 90 26" aria-hidden="true" preserveAspectRatio="none"><path d="${v.wave}"/></svg><strong>${v.label}</strong><small>${v.desc}</small>`;
+  b.onclick=()=>{st.s=k;render()};sEl.appendChild(b);
+}
+for(const[k,v]of Object.entries(WHENS)){
+  const b=document.createElement("button");b.className="opt";b.id="w-"+k;b.dataset.k=k;b.textContent=v;
+  b.onclick=()=>{st.w=k;render()};wEl.appendChild(b);
+}
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function render(){
+  sEl.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===st.s));
+  wEl.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===st.w));
+  const d=D[st.s+"|"+st.w]||FALLBACK[st.s];
+  rEl.innerHTML=`<div class="rhead"><span class="code">${SOUNDS[st.s].label.toUpperCase()} · ${WHENS[st.w].toUpperCase()}</span><h3>${esc(d.t)}</h3><span class="pill ${d.u}">${URG[d.u]}</span></div>
+  <ol class="causes">${d.c.map((c,i)=>`<li><span class="n">0${i+1}</span><div><h4>${esc(c[0])}</h4><p>${esc(c[1])}</p><span class="check">${esc(c[2])}</span></div></li>`).join("")}</ol>
+  <div class="parts"><span class="l">Parts often involved</span>${d.p.map(p=>`<span class="p">${esc(p)}</span>`).join("")}</div>`;
+  rEl.classList.remove("flash");void rEl.offsetWidth;rEl.classList.add("flash");
+  try{localStorage.setItem("noisePick",JSON.stringify(st))}catch(e){}
+}
+render();
+</script>
+
+</body>
+</html>
