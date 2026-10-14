@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does This Dashboard Light Mean? Free Warning Light Guide | Honest Ride Parts</title>
+<meta name="description" content="Tap the warning light you see on your dashboard. Find out what it means, if it's safe to keep driving, and what to do next. Check engine, oil, battery, brake, tire pressure, and more.">
+<link rel="canonical" href="https://honestrideparts.com/dashboard-lights.html">
+<meta property="og:title" content="What Does This Dashboard Light Mean?">
+<meta property="og:description" content="Tap the light you see. Find out what it means and if it's safe to keep driving.">
+<meta property="og:url" content="https://honestrideparts.com/dashboard-lights.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: an instrument cluster you can tap — dark dash panel of lights, readout card beneath */
+:root{
+  --bg:#eef1f4; --panel:#ffffff; --ink:#16202b; --muted:#5a6878; --line:#d5dce4;
+  --accent:#E8590C; --accent-ink:#ffffff; --chip:#e3e8ee;
+  --dash:#0e1216; --dash-edge:#262e36; --dash-off:#3a434c;
+  --red:#ff4a3d; --amber:#ffb000; --green:#35d07f; --blue:#3d8bff;
+  --stop:#c62f2f; --soon:#b77a00; --watch:#2f7d5b; --info:#2d6cc4;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161c; --panel:#19212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2b3642;
+  --accent:#ff7a2e; --accent-ink:#1a0e02; --chip:#222c37;
+  --stop:#ff6b6b; --soon:#f2b632; --watch:#5cc493; --info:#7db1ff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161c; --panel:#19212a; --ink:#e8edf2; --muted:#9aa8b6; --line:#2b3642;
+  --accent:#ff7a2e; --accent-ink:#1a0e02; --chip:#222c37;
+  --stop:#ff6b6b; --soon:#f2b632; --watch:#5cc493; --info:#7db1ff; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding-inline:18px;padding-block:28px 48px;display:flex;flex-direction:column;gap:28px}
+.topnav{display:flex;flex-wrap:wrap;gap:16px;font-weight:600}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a:hover{color:var(--accent)}
+header{display:flex;flex-direction:column;gap:6px}
+.brand{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,70px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{margin:4px 0 0;color:var(--muted);max-width:60ch}
+
+/* the dash */
+.dash{background:var(--dash);border:1px solid var(--dash-edge);border-radius:22px;padding:20px 18px 22px;display:flex;flex-direction:column;gap:18px;box-shadow:inset 0 2px 30px rgba(0,0,0,.6)}
+.band{display:flex;flex-direction:column;gap:10px}
+.band-h{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#aab4be}
+.band-h i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.lights{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.light{font:inherit;cursor:pointer;background:#151b21;border:1.5px solid var(--dash-edge);border-radius:14px;padding:12px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--c);transition:transform .15s,border-color .15s,box-shadow .2s}
+.light svg{width:46px;height:46px;display:block;filter:drop-shadow(0 0 6px var(--c));opacity:.9}
+.light svg *{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.light svg .f{fill:currentColor;stroke:none}
+.light svg text{fill:currentColor;stroke:none;font-family:Arial,sans-serif;font-weight:700}
+.light span{font-size:13px;line-height:1.2;color:#d6dde4;text-align:center;font-weight:600}
+.light:hover{border-color:#4a5562;transform:translateY(-1px)}
+.light:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.light[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 22px -4px var(--c)}
+.light[aria-pressed="true"] svg{opacity:1;filter:drop-shadow(0 0 10px var(--c))}
+@media (prefers-reduced-motion:no-preference){.blink svg{animation:blink 1s steps(2,start) infinite}@keyframes blink{to{opacity:.15}}}
+
+/* readout */
+.readout{scroll-margin-top:16px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;overflow:hidden}
+.rtop{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
+.ricon{width:76px;height:76px;border-radius:16px;background:var(--dash);display:grid;place-items:center;color:var(--c)}
+.ricon svg{width:50px;height:50px;filter:drop-shadow(0 0 8px var(--c))}
+.ricon svg *{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ricon svg .f{fill:currentColor;stroke:none}
+.ricon svg text{fill:currentColor;stroke:none;font-family:Arial,sans-serif;font-weight:700}
+.rtitle{display:flex;flex-direction:column;gap:8px;min-width:0}
+.code{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.rtop h2{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1.5px solid currentColor}
+.pill.stop{color:var(--stop)} .pill.soon{color:var(--soon)} .pill.watch{color:var(--watch)} .pill.info{color:var(--info)}
+.rbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media (max-width:640px){.rbody{grid-template-columns:minmax(0,1fr)}.rtop{grid-template-columns:60px minmax(0,1fr)}.ricon{width:60px;height:60px}.ricon svg{width:40px;height:40px}.rtop h2{font-size:27px}}
+.blk{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.blk h3{margin:0;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.blk p{margin:0}
+.blk ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.blk.wide{grid-column:1/-1}
+.drive{font-weight:600}
+.parts{padding:16px 22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.parts .l{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.parts .p{background:var(--chip);border-radius:6px;padding:4px 10px;font-size:14px;font-weight:600}
+
+.guide .colors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.guide .colors{grid-template-columns:minmax(0,1fr)}}
+.colors div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.colors b{display:flex;align-items:center;gap:8px;font-size:16px}
+.colors b i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.colors p{margin:0;color:var(--muted);font-size:15px}
+.sec-h{font-family:var(--display);font-weight:800;font-size:30px;text-transform:uppercase;margin:0}
+
+.mike{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border-radius:14px;padding:22px}
+.mike p{margin:0;max-width:46ch}
+.mike strong{font-family:var(--display);font-size:26px;text-transform:uppercase;display:block;line-height:1.1}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;text-decoration:none;padding:12px 20px;border-radius:999px}
+.btn:focus-visible{outline:3px solid var(--bg);outline-offset:3px}
+.guide{display:flex;flex-direction:column;gap:14px}
+.guide div{display:flex;flex-direction:column;gap:2px}
+.guide h3{margin:0;font-size:18px}
+.guide p{margin:0;color:var(--muted);max-width:65ch}
+.cross{border-left:3px solid var(--accent);padding:4px 0 4px 16px}
+.cross a{color:var(--accent);font-weight:700}
+.fine{font-size:13.5px;color:var(--muted);margin:0}
+@media (prefers-reduced-motion:no-preference){.readout.flash{animation:f .35s ease-out}@keyframes f{from{transform:translateY(4px);opacity:.6}to{transform:none;opacity:1}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="topnav" aria-label="Main">
+    <a href="https://honestrideparts.com/">Home</a>
+    <a href="https://honestrideparts.com/used-parts.html">Used Parts</a>
+    <a href="https://honestrideparts.com/car-noise-checker.html">Noise Checker</a>
+    <a href="https://honestrideparts.com/#ask-mike">Ask Mike</a>
+  </nav>
+
+  <header>
+    <div class="brand">Honest Ride Parts · Free tool</div>
+    <h1>What does this <span>light</span> mean?</h1>
+    <p class="lede">Tap the warning light you see on your dashboard. Find out what it means, whether it's safe to keep driving, and what to do next.</p>
+  </header>
+
+  <div class="dash" id="dash" aria-label="Dashboard warning lights"></div>
+
+  <section class="readout" id="readout" aria-live="polite"></section>
+
+  <div class="mike">
+    <p><strong>Light still on? Ask Mike.</strong>Tell our free AI mechanic your car and what the light is doing. He'll help you figure out the next step.</p>
+    <a class="btn" href="https://honestrideparts.com/#ask-mike">Talk to Mike, free</a>
+  </div>
+
+  <section class="guide" aria-labelledby="colors-h">
+    <h2 class="sec-h" id="colors-h">What the colors mean</h2>
+    <div class="colors">
+      <div><b><i style="background:var(--red)"></i>Red</b><p>A serious problem or a safety issue. Stop soon and check it.</p></div>
+      <div><b><i style="background:var(--amber)"></i>Yellow or orange</b><p>Something needs attention soon. Usually safe to drive for now.</p></div>
+      <div><b><i style="background:var(--green)"></i>Green or blue</b><p>A system is on, like high beams or cruise control. Nothing is wrong.</p></div>
+    </div>
+  </section>
+
+  <section class="guide" aria-labelledby="common-h">
+    <h2 class="sec-h" id="common-h">The most common warning lights</h2>
+    <div><h3>Check engine light</h3><p>The engine computer found a problem. A steady light is usually safe to drive on for a short time. A flashing light means a serious misfire, so slow down and get it checked right away.</p></div>
+    <div><h3>Oil pressure light</h3><p>The engine isn't getting enough oil pressure. Pull over and turn the engine off. Driving on can ruin the engine.</p></div>
+    <div><h3>Battery light</h3><p>The battery isn't being charged, usually because of the alternator or a broken belt. You may have only a short time before the car dies.</p></div>
+    <div><h3>Tire pressure light</h3><p>One or more tires are low. Cold mornings lower tire pressure, so this light often comes on in fall and winter.</p></div>
+    <div><h3>Engine temperature light</h3><p>The engine is overheating. Pull over and turn it off. Never open the radiator cap while the engine is hot.</p></div>
+  </section>
+
+  <p class="cross">Hearing a strange noise too? Try our free <a href="https://honestrideparts.com/car-noise-checker.html">Noise Checker</a>.</p>
+
+  <p class="fine">Symbols can look a little different from car to car. Your owner's manual has the exact list for your vehicle. This is a guide, not a diagnosis.</p>
+</div>
+
+<script>
+const ICON={
+ oil:'<path d="M7 26h22v9H11l-4-4z"/><path d="M8 27c-4 0-4 6 0 6"/><path d="M15 26v-4h7v4"/><path d="M29 28l12-6"/><path class="f" d="M42 27c-1.6 3-3 4.3-3 6a3 3 0 0 0 6 0c0-1.7-1.4-3-3-6z"/>',
+ temp:'<path d="M24 7v20"/><circle cx="24" cy="31" r="4.5"/><path d="M24 11h6M24 17h6M24 23h6"/><path d="M7 41c3-3 6 3 9 0s6 3 9 0 6 3 9 0 6 3 8 0"/>',
+ brake:'<circle cx="24" cy="24" r="11"/><path d="M9 14a17 17 0 0 0 0 20M39 14a17 17 0 0 1 0 20"/><path d="M24 17v9"/><circle class="f" cx="24" cy="30.5" r="1.8"/>',
+ battery:'<rect x="7" y="15" width="34" height="23" rx="2"/><path d="M13 15v-4h6v4M29 15v-4h6v4"/><path d="M12 27h7M29 27h7M32.5 23.5v7"/>',
+ airbag:'<circle cx="15" cy="10" r="3.5"/><path d="M15 16l2 14h11l5 11"/><path d="M12 22l-1 10"/><circle cx="33" cy="21" r="8"/>',
+ check:'<path d="M17 12h12M23 12v4"/><path d="M11 16h20l4 4h4v-3h3v14h-3v-3h-4l-5 6H15l-3-4H8v4H5V20h3v4h3z"/>',
+ tpms:'<path d="M13 11c-7 7-7 19 0 25h22c7-6 7-18 0-25"/><path d="M13 36v4M18.5 36v4M24 36v4M29.5 36v4M35 36v4"/><path d="M24 15v11"/><circle class="f" cx="24" cy="30.5" r="1.8"/>',
+ abs:'<circle cx="24" cy="24" r="12"/><path d="M8 13a18 18 0 0 0 0 22M40 13a18 18 0 0 1 0 22"/><text x="24" y="27.5" text-anchor="middle" font-size="9.5">ABS</text>',
+ traction:'<path d="M12 22l4-7h16l4 7v6H12z"/><circle cx="17" cy="28" r="2.5"/><circle cx="31" cy="28" r="2.5"/><path d="M15 33c3 3-3 5 0 9M33 33c3 3-3 5 0 9"/>',
+ steer:'<circle cx="21" cy="24" r="13"/><circle cx="21" cy="24" r="3.5"/><path d="M8 24h9.5M24.5 24H34M21 27.5V37"/><path d="M42 15v10"/><circle class="f" cx="42" cy="30" r="1.8"/>',
+ fuel:'<rect x="9" y="10" width="17" height="30" rx="2"/><rect x="13" y="14" width="9" height="8"/><path d="M26 19h4l4 4v13a2.2 2.2 0 0 0 4.4 0V18l-4-5"/><path d="M6 40h23"/>',
+ highbeam:'<path d="M27 12c10 0 14 6 14 12s-4 12-14 12z"/><path d="M7 15h14M7 21h14M7 27h14M7 33h14"/>',
+ cruise:'<path d="M9 33a15 15 0 1 1 30 0"/><path d="M24 33l8-11"/><circle class="f" cx="24" cy="33" r="2.4"/><path d="M14 38h20"/>'
+};
+const L=[
+ {id:"oil",i:"oil",name:"Oil pressure",c:"red",u:"stop",
+  mean:"The engine isn't getting enough oil pressure. Without oil pressure, the moving parts inside the engine grind against each other.",
+  drive:"No. Pull over safely and turn the engine off right away. Running without oil pressure can destroy an engine in minutes.",
+  todo:["Park on level ground and wait 5 minutes.","Pull the dipstick, wipe it, push it back in, and check the level.","If it's low, add the oil type listed in your owner's manual.","If the level is fine and the light stays on, don't drive. Have it towed. It may be the oil pump or the pressure sensor."],
+  parts:["Engine oil","Oil filter","Oil pressure sensor"]},
+ {id:"temp",i:"temp",name:"Engine overheating",c:"red",u:"stop",
+  mean:"The engine is running too hot. Low coolant, a leak, a stuck thermostat, or a failing water pump are the usual causes.",
+  drive:"No. Pull over and turn the engine off. Driving while overheating can warp the engine and blow the head gasket.",
+  todo:["Never open the radiator cap while the engine is hot. Hot coolant can burn you badly.","Wait at least 30 minutes, then check the coolant reservoir level.","Look under the car for green, orange, or pink puddles.","If you must move a short distance, turn the heater to full hot. It pulls heat away from the engine."],
+  parts:["Coolant","Thermostat","Radiator hose","Water pump"]},
+ {id:"brake",i:"brake",name:"Brake system",c:"red",u:"stop",
+  mean:"Either the parking brake is on, the brake fluid is low, or there's a problem in the brake system.",
+  drive:"First, make sure the parking brake is fully released. If the light stays on, drive carefully to a shop. If the pedal feels soft or sinks, don't drive. Have it towed.",
+  todo:["Release the parking brake all the way.","Check the brake fluid reservoir under the hood.","Low fluid usually means worn pads or a leak. Don't just top it off and forget it.","If the ABS light is on at the same time, get it checked right away."],
+  parts:["Brake fluid","Brake pads","Master cylinder"]},
+ {id:"battery",i:"battery",name:"Battery / charging",c:"red",u:"stop",
+  mean:"The battery isn't being charged. The alternator or the belt that drives it is usually the cause, not the battery itself.",
+  drive:"Only a short distance. The car is running on battery power alone and may die in 20 to 30 minutes. Go straight home or to a shop.",
+  todo:["Turn off the AC, radio, heated seats, and anything else you don't need.","With the engine off, check that the serpentine belt is still there and not broken.","Check the battery terminals for white or green crust or loose cables.","Many auto parts stores test the battery and alternator for free."],
+  parts:["Alternator","Battery","Serpentine belt"]},
+ {id:"airbag",i:"airbag",name:"Airbag (SRS)",c:"red",u:"soon",
+  mean:"The airbag system found a problem. Your airbags may not open in a crash.",
+  drive:"The car drives normally, but you and your passengers may not be protected in a crash. Get it checked soon.",
+  todo:["A common cause is a loose plug under the front seat, often after moving the seat or cleaning under it.","Don't unplug or test airbag parts yourself. They can go off and injure you.","Have a shop read the airbag code with a scan tool."],
+  parts:["Seat belt buckle sensor","Clock spring"]},
+ {id:"check",i:"check",name:"Check engine (steady)",c:"amber",u:"soon",
+  mean:"The engine computer found a problem. It can be anything from a loose gas cap to a failing sensor.",
+  drive:"Usually yes, for now. Get the code read soon so a small problem doesn't turn into a big one.",
+  todo:["Tighten the gas cap until it clicks. The light may go off after a few days of driving.","Many auto parts stores read the code for free.","Notice any change in how the car runs, sounds, or uses fuel."],
+  parts:["Gas cap","Oxygen sensor","Spark plugs","Ignition coil"]},
+ {id:"check-flash",i:"check",name:"Check engine (flashing)",c:"amber",u:"stop",blink:true,
+  mean:"A flashing check engine light means a serious misfire. Unburned fuel can overheat and ruin the catalytic converter, which is expensive to replace.",
+  drive:"Not far. Slow down and avoid hard acceleration. Get it checked right away.",
+  todo:["Ease off the gas and don't tow or carry heavy loads.","Get the code read today.","Bad spark plugs and ignition coils are the most common causes."],
+  parts:["Spark plugs","Ignition coils","Catalytic converter"]},
+ {id:"tpms",i:"tpms",name:"Low tire pressure",c:"amber",u:"watch",
+  mean:"One or more tires are well below the recommended pressure. Cold weather lowers tire pressure, so this light often comes on during fall mornings.",
+  drive:"Yes, carefully, to the nearest air pump. If a tire looks flat, stop and put on the spare.",
+  todo:["Check all four tires with a gauge before driving, while they're cold.","Fill to the number on the sticker inside the driver's door, not the number on the tire.","If the light flashes for about a minute and then stays on, a sensor has a problem, not the tire."],
+  parts:["Tire pressure gauge","TPMS sensor","Tire repair kit"]},
+ {id:"abs",i:"abs",name:"ABS",c:"amber",u:"soon",
+  mean:"The anti-lock brake system is off. Your normal brakes still work, but the wheels can lock up in a hard stop.",
+  drive:"Yes, carefully. Leave extra space, especially on snow and ice.",
+  todo:["A dirty or damaged wheel speed sensor is the most common cause.","If the red brake light is also on, treat it as serious and get it checked right away."],
+  parts:["Wheel speed sensor","ABS sensor wiring"]},
+ {id:"traction",i:"traction",name:"Traction control",c:"amber",u:"watch",
+  mean:"If it flashes while driving, the system is working to stop your wheels from slipping. That's normal on slick roads. If it stays on, the system is off or has a fault.",
+  drive:"Flashing: slow down and ease off the gas. Steady: yes, drive carefully.",
+  todo:["Check whether the traction control button was pressed by accident.","A steady light often has the same cause as the ABS light: a wheel speed sensor."],
+  parts:["Wheel speed sensor"]},
+ {id:"steer",i:"steer",name:"Power steering",c:"amber",u:"soon",
+  mean:"The power steering system has a problem. Steering can suddenly get very heavy, especially at low speed.",
+  drive:"Carefully. Be ready for heavy steering in parking lots and turns. Get it checked soon.",
+  todo:["Turn the car off and restart it. The light sometimes resets after a voltage dip.","A weak battery can trigger this light on cars with electric steering.","On older cars with hydraulic steering, check the fluid level."],
+  parts:["Power steering fluid","Battery","Power steering pump"]},
+ {id:"fuel",i:"fuel",name:"Low fuel",c:"amber",u:"watch",
+  mean:"You're running low on gas. Most cars have about 1 to 3 gallons left when this comes on.",
+  drive:"Yes, to the nearest gas station.",
+  todo:["Don't run the tank close to empty often. The fuel keeps the fuel pump cool, and a low tank can pull dirt from the bottom."],
+  parts:["Fuel pump","Fuel filter"]},
+ {id:"highbeam",i:"highbeam",name:"High beams on",c:"blue",u:"info",
+  mean:"Your high beams (brights) are on.",
+  drive:"Yes. Dim them when a car is coming toward you or when you're following close behind someone.",
+  todo:["Push or pull the headlight stalk to switch back to low beams."],
+  parts:["Headlight bulbs"]},
+ {id:"cruise",i:"cruise",name:"Cruise control",c:"green",u:"info",
+  mean:"Cruise control is on or set.",
+  drive:"Yes. Don't use cruise control on snowy, icy, or wet roads.",
+  todo:["If cruise control stops working, a bad brake light switch is a common cause. Check that your brake lights work."],
+  parts:["Brake light switch"]}
+];
+const BANDS=[["red","Red · stop soon","var(--red)"],["amber","Yellow / orange · check soon","var(--amber)"],["info","Green / blue · information","var(--green)"]];
+const URG={stop:"Stop driving soon",soon:"Get it checked soon",watch:"Okay to drive, keep an eye on it",info:"Nothing is wrong"};
+const COL={red:"var(--red)",amber:"var(--amber)",green:"var(--green)",blue:"var(--blue)"};
+const svg=k=>`<svg viewBox="0 0 48 48" aria-hidden="true">${ICON[k]}</svg>`;
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+const dash=document.getElementById("dash"),out=document.getElementById("readout");
+for(const[key,label,color]of BANDS){
+  const items=L.filter(l=>key==="info"?(l.c==="green"||l.c==="blue"):l.c===key);
+  const b=document.createElement("div");b.className="band";
+  b.innerHTML=`<div class="band-h"><i style="background:${color}"></i>${label}</div><div class="lights"></div>`;
+  const g=b.querySelector(".lights");
+  for(const l of items){
+    const btn=document.createElement("button");
+    btn.className="light"+(l.blink?" blink":"");btn.id="l-"+l.id;btn.dataset.id=l.id;
+    btn.style.setProperty("--c",COL[l.c]);
+    btn.innerHTML=svg(l.i)+`<span>${esc(l.name)}</span>`;
+    btn.onclick=()=>pick(l.id,true);
+    g.appendChild(btn);
+  }
+  dash.appendChild(b);
+}
+function pick(id,user){
+  const l=L.find(x=>x.id===id)||L.find(x=>x.id==="check");
+  dash.querySelectorAll(".light").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===l.id));
+  out.style.setProperty("--c",COL[l.c]);
+  out.innerHTML=`<div class="rtop"><div class="ricon${l.blink?" blink":""}">${svg(l.i)}</div><div class="rtitle"><span class="code">${l.c==="amber"?"Yellow":l.c[0].toUpperCase()+l.c.slice(1)} light</span><h2>${esc(l.name)}</h2><span class="pill ${l.u}">${URG[l.u]}</span></div></div>
+  <div class="rbody"><div class="blk"><h3>What it means</h3><p>${esc(l.mean)}</p></div><div class="blk"><h3>Can I keep driving?</h3><p class="drive">${esc(l.drive)}</p></div>
+  <div class="blk wide"><h3>What to do</h3><ol>${l.todo.map(t=>`<li>${esc(t)}</li>`).join("")}</ol></div></div>
+  <div class="parts"><span class="l">Parts often involved</span>${l.parts.map(p=>`<span class="p">${esc(p)}</span>`).join("")}</div>`;
+  if(user){
+    try{history.replaceState(null,"","#"+l.id)}catch(e){}
+    out.classList.remove("flash");void out.offsetWidth;out.classList.add("flash");
+    const r=out.getBoundingClientRect();
+    if(r.top>window.innerHeight*0.6) out.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  }
+}
+const h=location.hash.slice(1);
+const fromLink=L.some(x=>x.id===h);
+pick(fromLink?h:"check",false);
+if(fromLink) setTimeout(()=>out.scrollIntoView({block:"start"}),50);
+window.addEventListener("hashchange",()=>{const k=location.hash.slice(1);if(L.some(x=>x.id===k)){pick(k,false);out.scrollIntoView({block:"start"})}});
+</script>
+</body>
+</html>
