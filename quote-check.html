@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repair Quote Check | Honest Ride Parts</title>
+<meta name="description" content="Not sure your repair quote is fair? Send a photo. We check part prices, labor hours, and what can wait, and email you a plain-English report. Free for a short time.">
+<link rel="canonical" href="https://honestrideparts.com/quote-check.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Honest Ride Parts">
+<meta property="og:title" content="Repair Quote Check: is your mechanic's quote fair?">
+<meta property="og:description" content="Not sure your repair quote is fair? Send a photo. We check part prices, labor hours, and what can wait, and email you a plain-English report. Free for a short time.">
+<meta property="og:url" content="https://honestrideparts.com/quote-check.html">
+<meta property="og:image" content="https://honestrideparts.com/og-image-v2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Repair Quote Check: is your mechanic's quote fair?">
+<meta name="twitter:description" content="Not sure your repair quote is fair? Send a photo. We check part prices, labor hours, and what can wait, and email you a plain-English report. Free for a short time.">
+<meta name="twitter:image" content="https://honestrideparts.com/og-image-v2.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#1B1F22; --bg-panel:#23282B; --steel:#3E4C59;
+    --accent:#E8590C; --accent-dim:#B8480C; --paper:#F4EFE6;
+    --ink:#1B1F22; --muted:#8A9199; --line:#333B40;
+    --soft:#D6D0C5; --ok:#5FC08A; --warn:#F2B36B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg-deep);font-family:'IBM Plex Sans',sans-serif;color:var(--paper);font-size:16px;line-height:1.55;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 48px;}
+
+  header{padding:32px 16px 22px;text-align:center;border-bottom:2px solid var(--accent);}
+  .brand-row{display:flex;align-items:center;justify-content:center;gap:12px;}
+  .brand-row .car-icon{width:38px;height:38px;color:var(--accent);flex-shrink:0;}
+  header h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;letter-spacing:.5px;margin:0;}
+  header h1 a{color:inherit;text-decoration:none;}
+  header h1 span{color:var(--accent);}
+  header p{margin:8px 0 0;font-size:15.5px;color:var(--muted);letter-spacing:.3px;}
+  .site-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:16px;}
+  .site-nav a,.site-nav .nav-current{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--paper);text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent;}
+  .site-nav a:hover,.site-nav a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);}
+  .site-nav .nav-current{color:var(--accent);border-bottom-color:var(--accent);}
+  @media (max-width:480px){header h1{font-size:32px;}.brand-row .car-icon{width:30px;height:30px;}}
+
+  .section-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:1px;color:var(--accent);margin:0 0 6px;}
+  section{margin-top:30px;}
+
+  .intro h2{font-family:'Oswald',sans-serif;font-size:32px;line-height:1.2;margin:0 0 10px;}
+  .intro p{margin:0;color:var(--soft);max-width:36em;}
+
+  .steps{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;counter-reset:step;}
+  .steps li{background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;padding:14px 14px 16px;font-size:14.5px;color:var(--soft);counter-increment:step;}
+  .steps li::before{content:counter(step);display:block;font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px;}
+  .steps strong{display:block;color:var(--paper);font-weight:600;margin-bottom:2px;}
+
+  .panel{background:var(--bg-panel);border:1px solid var(--line);border-radius:10px;padding:22px 18px;}
+  .panel h3{font-family:'Oswald',sans-serif;font-size:22px;margin:0 0 4px;}
+  .panel .sub{margin:0 0 18px;color:var(--muted);font-size:14.5px;}
+  fieldset{border:0;padding:0;margin:0 0 6px;}
+  legend{font-family:'Oswald',sans-serif;font-size:17px;padding:0;margin:18px 0 10px;color:var(--paper);width:100%;border-top:1px dashed var(--line);padding-top:16px;}
+  fieldset:first-of-type legend{border-top:0;padding-top:0;margin-top:0;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .row.three{grid-template-columns:110px 1fr 1fr;}
+  @media (max-width:520px){.row,.row.three{grid-template-columns:1fr;}}
+  .field{margin-bottom:14px;min-width:0;}
+  label{display:block;font-size:14px;font-weight:600;margin:0 0 5px;}
+  label .opt{font-weight:400;color:var(--muted);}
+  input,select,textarea{width:100%;background:var(--bg-deep);color:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 12px;font-size:16px;font-family:inherit;}
+  textarea{min-height:92px;resize:vertical;}
+  input::placeholder,textarea::placeholder{color:#6B737B;}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  #vin{font-family:'IBM Plex Mono',monospace;letter-spacing:1px;text-transform:uppercase;}
+  .hint{font-size:13px;color:var(--muted);margin:5px 0 0;}
+  .hint.bad{color:var(--warn);}
+  details{margin:6px 0 0;font-size:13.5px;color:var(--soft);}
+  summary{cursor:pointer;color:var(--accent);font-weight:500;}
+  details ul{margin:6px 0 0;padding-left:18px;}
+  .trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+  .send{display:block;width:100%;background:var(--accent);color:var(--paper);border:0;border-radius:6px;padding:14px;font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;margin-top:8px;}
+  .send:hover{background:var(--accent-dim);}
+  .send:disabled{background:var(--steel);cursor:default;}
+  .fine{font-size:13px;color:var(--muted);margin:10px 0 0;text-align:center;}
+  .fine a{color:var(--muted);}
+
+  .msg{border-radius:8px;padding:16px;margin-top:14px;font-size:15px;}
+  .msg h4{font-family:'Oswald',sans-serif;font-size:20px;margin:0 0 6px;}
+  .msg p{margin:0 0 8px;}
+  .msg p:last-child{margin-bottom:0;}
+  .msg.ok{background:rgba(95,192,138,.12);border:1px solid rgba(95,192,138,.5);}
+  .msg.problem{background:rgba(242,179,107,.1);border:1px solid rgba(242,179,107,.5);}
+  .msg a.btn{display:inline-block;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:600;padding:10px 16px;border-radius:6px;margin-top:4px;}
+  .ref{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--paper);}
+  [hidden]{display:none !important;}
+
+  .pay-grid{display:grid;grid-template-columns:1fr 150px;gap:12px;}
+  @media (max-width:520px){.pay-grid{grid-template-columns:1fr;}}
+  #paypal-buttons{margin-top:6px;background:var(--paper);border-radius:8px;padding:14px 14px 4px;}
+
+  dl{margin:0;}
+  dt{font-weight:600;margin-top:14px;}
+  dt:first-child{margin-top:0;}
+  dd{margin:2px 0 0;color:var(--soft);font-size:15px;}
+  .mike{margin:16px 0 0;font-size:15px;color:var(--soft);}
+  .mike a{color:var(--accent);}
+
+  footer{text-align:center;font-size:13px;color:var(--muted);margin-top:36px;}
+  footer a{color:var(--muted);}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .free-tag{display:inline-block;margin-left:8px;background:var(--accent);color:var(--paper);border-radius:4px;padding:2px 8px;font-size:11px;letter-spacing:.8px;}
+  .checklist{list-style:none;margin:0;padding:0;}
+  .checklist li{padding:9px 0 9px 26px;position:relative;color:var(--soft);font-size:15px;border-bottom:1px dashed var(--line);}
+  .checklist li:last-child{border-bottom:0;}
+  .checklist li::before{content:"✓";position:absolute;left:2px;top:8px;color:var(--ok);font-weight:700;}
+  .checklist strong{color:var(--paper);}
+  .privacy{background:rgba(242,179,107,.1);border:1px solid rgba(242,179,107,.5);border-radius:8px;padding:12px 14px;font-size:14.5px;color:var(--soft);margin:0 0 18px;}
+  .privacy strong{color:var(--paper);}
+  input[type=file]{padding:9px;cursor:pointer;}
+  input[type=file]::file-selector-button{background:var(--steel);color:var(--paper);border:0;border-radius:4px;padding:7px 12px;margin-right:10px;font-family:inherit;cursor:pointer;}
+  .agree{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14.5px;margin:4px 0 14px;cursor:pointer;}
+  .agree input{width:20px;height:20px;flex-shrink:0;margin:1px 0 0;accent-color:var(--accent);}
+</style>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand-row">
+      <svg class="car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13"></path>
+        <path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"></path>
+        <circle cx="7" cy="17.5" r="1.5"></circle>
+        <circle cx="17" cy="17.5" r="1.5"></circle>
+      </svg>
+      <h1><a href="index.html">HONEST RIDE <span>PARTS</span></a></h1>
+    </div>
+    <p>Real parts. Real diagnosis. No upsell, ever.</p>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <span class="nav-current">Quote Check</span>
+      <a href="used-parts.html">Used Parts</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="reviews.html">Buyer's Guide</a>
+      <a href="guides.html">DIY Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <p class="section-label">REPAIR QUOTE CHECK <span class="free-tag">FREE FOR A SHORT TIME</span></p>
+    <h2>Got a repair quote and not sure it's fair? Send it to us.</h2>
+    <p>We look at every line on your mechanic's quote: what the parts really cost, whether the labor hours are normal, and which repairs can wait. You get a short, plain-English report by email. You decide what to do.</p>
+    <ol class="steps">
+      <li><strong>Send your quote</strong>Take a photo of it and send it with the form below.</li>
+      <li><strong>We check it</strong>Part prices (new and used), normal labor time for your car, and what's urgent.</li>
+      <li><strong>Get your report</strong>By email, usually within 24 hours. No pressure, no upsell.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="section-label">WHAT YOU GET</p>
+    <div class="panel">
+      <ul class="checklist">
+        <li><strong>Parts:</strong> the shop's price next to what the same part costs online, new and used</li>
+        <li><strong>Labor:</strong> whether the hours look normal for your car</li>
+        <li><strong>Priority:</strong> each repair marked <em>needed now</em>, <em>can wait</em>, or <em>ask the shop why</em></li>
+        <li><strong>Questions to ask:</strong> polite, simple questions you can take back to your mechanic</li>
+        <li><strong>Parts help (optional):</strong> if you want, we can find the parts for you</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ QUOTE FORM ============================ -->
+  <section id="send">
+    <div class="panel">
+      <h3>Send your quote</h3>
+      <p class="sub">Free for a short time. We reply by email, usually within 24 hours.</p>
+
+      <div class="msg ok" id="sentMsg" hidden>
+        <h4>Got it, thank you!</h4>
+        <p>Your quote is on its way to us. We'll email your report, usually within 24 hours. If we need more details, we'll ask by email.</p>
+      </div>
+
+      <div class="privacy">
+        🔒 <strong>Before you send:</strong> cover or crop out your name, phone number, and address on the quote. We only need the car and the repairs.
+      </div>
+
+      <form id="quoteForm" action="https://formsubmit.co/hello@honestrideparts.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" id="subjectField" value="New Quote Check request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://honestrideparts.com/quote-check.html?sent=1#send">
+        <div class="trap" aria-hidden="true">
+          <label for="hp">Leave this empty</label>
+          <input type="text" id="hp" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset>
+          <legend>Your quote</legend>
+          <div class="field">
+            <label for="photo">Photo or PDF of the quote</label>
+            <input id="photo" name="attachment" type="file" accept="image/*,.pdf" required aria-describedby="photoHint">
+            <p class="hint" id="photoHint">One file, up to 5 MB. A clear phone photo is fine.</p>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your car</legend>
+          <div class="row three">
+            <div class="field">
+              <label for="year">Year</label>
+              <input id="year" name="Year" type="number" inputmode="numeric" min="1981" max="2027" placeholder="2014" required>
+            </div>
+            <div class="field">
+              <label for="make">Make</label>
+              <input id="make" name="Make" list="makes" placeholder="Toyota" autocomplete="off" required>
+              <datalist id="makes">
+                <option value="Acura"><option value="Audi"><option value="BMW"><option value="Buick"><option value="Cadillac"><option value="Chevrolet"><option value="Chrysler"><option value="Dodge"><option value="Ford"><option value="GMC"><option value="Honda"><option value="Hyundai"><option value="Infiniti"><option value="Jeep"><option value="Kia"><option value="Lexus"><option value="Lincoln"><option value="Mazda"><option value="Mercedes-Benz"><option value="Mini"><option value="Mitsubishi"><option value="Nissan"><option value="Ram"><option value="Subaru"><option value="Tesla"><option value="Toyota"><option value="Volkswagen"><option value="Volvo">
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="model">Model</label>
+              <input id="model" name="Model" placeholder="Camry" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="miles">Mileage <span class="opt">(about)</span></label>
+              <input id="miles" name="Mileage" inputmode="numeric" placeholder="120,000" required>
+            </div>
+            <div class="field">
+              <label for="city">City or ZIP</label>
+              <input id="city" name="City or ZIP" placeholder="Denver, CO" required>
+              <p class="hint">Labor prices change by area.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="problem">Why did you take the car in? <span class="opt">(optional)</span></label>
+            <textarea id="problem" name="Problem" placeholder="Grinding noise when braking, check engine light, regular service…"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where we send your report</legend>
+          <div class="row">
+            <div class="field">
+              <label for="name">First name</label>
+              <input id="name" name="First name" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <label class="agree">
+            <input type="checkbox" id="covered" required>
+            <span>I covered my name, phone, and address on the quote.</span>
+          </label>
+        </fieldset>
+
+        <button type="submit" class="send" id="sendBtn">Send my quote</button>
+        <p class="fine">Prefer DM or email? Message <a href="https://x.com/Honest_Ride" target="_blank" rel="noopener">@Honest_Ride</a> on X or email <a href="mailto:hello@honestrideparts.com?subject=Quote%20Check">hello@honestrideparts.com</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">GOOD TO KNOW</p>
+    <div class="panel">
+      <dl>
+        <dt>Is it really free?</dt>
+        <dd>Yes, for a short time while we launch. Later, Quote Check will be a small paid service, and this page will show the price before you send anything.</dd>
+        <dt>Will you tell me my mechanic is cheating me?</dt>
+        <dd>No. A higher price isn't proof of anything. Shops have different costs, warranties, and part brands. We show you the numbers and give you fair questions to ask, so you can talk with your mechanic with confidence.</dd>
+        <dt>Can you diagnose my car from the quote?</dt>
+        <dd>No. We don't see or test your car, so we can't confirm what's wrong. Our report is about prices, normal labor time, and priorities. For anything about brakes, steering, or tires, safety comes first: if the shop says it's unsafe, take that seriously.</dd>
+        <dt>What do you do with my quote?</dt>
+        <dd>We use it only to write your report. We never share it or post it. See our <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>.</dd>
+      </dl>
+      <p class="mike">Want a quick answer first? <a href="index.html#ask-mike">Ask Mike, our free AI mechanic →</a></p>
+    </div>
+  </section>
+
+  <footer>
+    Honest Ride Parts — real parts, real answers.<br>
+    <span style="display:block;margin:6px 0;">Independent site. As an Amazon Associate, I earn from qualifying purchases. I'm also an eBay Partner and earn from other partner links, at no extra cost to you.</span>
+    © 2026 Honest Ride Parts. All rights reserved.<br>
+    <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a> · <a href="contact.html">Contact</a>
+  </footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const MAX_MB = 5;
+
+$("photo").addEventListener("change", e => {
+  const f = e.target.files[0], hint = $("photoHint");
+  if (f && f.size > MAX_MB * 1024 * 1024){
+    e.target.value = "";
+    hint.textContent = `That file is too big (${(f.size/1048576).toFixed(1)} MB). Please use a file under ${MAX_MB} MB, or take a new photo at a smaller size.`;
+    hint.classList.add("bad");
+  } else {
+    hint.textContent = "One file, up to 5 MB. A clear phone photo is fine.";
+    hint.classList.remove("bad");
+  }
+});
+
+$("quoteForm").addEventListener("submit", () => {
+  $("subjectField").value = `Quote Check: ${$("year").value} ${$("make").value} ${$("model").value}`;
+  const btn = $("sendBtn");
+  btn.disabled = true; btn.textContent = "Sending…";
+});
+
+if (new URLSearchParams(location.search).get("sent") === "1"){
+  $("sentMsg").hidden = false;
+  $("quoteForm").hidden = true;
+  document.querySelector(".privacy").hidden = true;
+}
+</script>
+</body>
+</html>
