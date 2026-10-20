@@ -561,7 +561,7 @@
   }
 
   /* Deal links: honestrideparts.com/#mavis-deal, #oedro-deal and #accessories */
-  #mavis-deal,#oedro-deal,#accessories{scroll-margin-top:16px;}
+  #mavis-deal,#oedro-deal,#accessories,#newsletter{scroll-margin-top:16px;}
   #mavis-deal:target .promo-banner,#oedro-deal:target .promo-banner,#accessories:target .promo-banner{animation:dealGlow 1.2s ease-in-out 3;}
   @keyframes dealGlow{0%,100%{box-shadow:0 0 0 0 rgba(232,89,12,0);}50%{box-shadow:0 0 0 4px rgba(232,89,12,0.9),0 0 24px rgba(232,89,12,0.6);}}
   footer{
@@ -593,7 +593,7 @@
     <p>Real parts. Real diagnosis. No upsell, ever.</p>
     <nav class="site-nav">
       <span class="nav-current">Home</span>
-      <a href="quote-check.html">Quote Check</a>
+      <a href="newsletter.html" style="color:var(--accent);font-weight:700;">Newsletter</a>
       <a href="used-parts.html">Used Parts</a>
       <a href="accessories.html">Accessories</a>
       <a href="reviews.html">Buyer's Guide</a>
@@ -601,6 +601,17 @@
       <a href="about.html">About</a>
     </nav>
   </header>
+
+  <section id="newsletter">
+    <a href="newsletter.html" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;background:var(--bg-panel);border:2px solid var(--accent);border-radius:12px;padding:18px 20px;">
+      <span style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 260px;">
+        <span style="font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:700;">NEW · FREE NEWSLETTER</span>
+        <span style="font-size:24px;font-weight:800;color:var(--paper);line-height:1.15;">The Honest Mile: make your car last 500,000 miles</span>
+        <span style="font-size:15px;color:var(--muted);line-height:1.4;">Issue #1: 3 cheap habits that protect your car's most expensive parts.</span>
+      </span>
+      <span style="background:var(--accent);color:#fff;font-weight:700;padding:12px 20px;border-radius:999px;white-space:nowrap;">Read it now</span>
+    </a>
+  </section>
 
   <section id="oedro-deal">
     <a class="promo-banner" href="https://www.tkqlhce.com/click-101881388-17345332" target="_blank" rel="noopener sponsored">
@@ -610,12 +621,9 @@
   </section>
 
   <section id="accessories">
-    <a class="promo-banner" href="https://link.amazon/B0ajmMyyY" target="_blank" rel="noopener sponsored">
-      <img src="car-accessories-banner.jpg" alt="Car accessories: backseat organizer, bling interior set, magnetic phone mount, windshield shade. Shop car accessories on Amazon" width="1600" height="686" loading="lazy">
+    <a class="promo-banner" href="accessories.html">
+      <img src="car-accessories-banner.jpg" alt="Car accessories: backseat organizer, bling interior set, magnetic phone mount, windshield shade. Click to discover more" width="1600" height="686" loading="lazy">
     </a>
-    <p style="text-align:center;margin:14px 0 0;line-height:1.4;">
-      <a href="https://link.amazon/B0ajmMyyY" target="_blank" rel="noopener sponsored" style="display:inline-block;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:999px;">Shop budget car accessories on Amazon</a>
-    </p>
   </section>
 
   <section>
