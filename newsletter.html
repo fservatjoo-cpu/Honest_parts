@@ -12,6 +12,8 @@
 <meta property="og:type" content="article">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@500&display=swap">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: one reading column, like a printed shop newsletter; odometer masthead, illustrated habit cards */
@@ -120,16 +122,36 @@ article{display:flex;flex-direction:column;gap:22px;scroll-margin-top:16px}
 .mis div{display:flex;flex-direction:column;gap:8px}
 .mis h4{margin:0;font-size:20px;line-height:1.25}
 .mis p{margin:0;font-family:var(--read);font-size:18px;line-height:1.6}
+
+/* Site header copied from the home page so every page has the same menu */
+.hrp-head{padding:28px 16px 20px;text-align:center;border-bottom:2px solid #E8590C;background:#1B1F22;margin-inline:-18px}
+.hrp-brand{display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none}
+.hrp-brand svg{width:34px;height:34px;color:#E8590C;flex-shrink:0}
+.hrp-brand b{font-family:'Oswald',"Arial Narrow",sans-serif;font-size:36px;font-weight:700;letter-spacing:.5px;color:#F4EFE6;line-height:1.1}
+.hrp-brand b span{color:#E8590C}
+.hrp-tag{margin:6px 0 0;font-size:15px;color:#8A9199;font-family:'IBM Plex Sans',sans-serif}
+.hrp-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin-top:16px}
+.hrp-nav a,.hrp-nav .cur{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;color:#F4EFE6;text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent}
+.hrp-nav a:hover,.hrp-nav a:focus-visible{color:#E8590C;border-bottom-color:#E8590C}
+.hrp-nav .cur{color:#E8590C;border-bottom-color:#E8590C}
+@media (max-width:480px){.hrp-brand b{font-size:28px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav class="topnav" aria-label="Main">
-    <a href="https://honestrideparts.com/">Home</a>
-    <a href="https://honestrideparts.com/car-noise-checker.html">Noise Checker</a>
-    <a href="https://honestrideparts.com/dashboard-lights.html">Dashboard Lights</a>
-    <a href="https://honestrideparts.com/#ask-mike">Ask Mike</a>
-  </nav>
+  <div class="hrp-head">
+    <a class="hrp-brand" href="https://honestrideparts.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13"></path><path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"></path><circle cx="7" cy="17.5" r="1.5"></circle><circle cx="17" cy="17.5" r="1.5"></circle></svg><b>HONEST RIDE <span>PARTS</span></b></a>
+    <p class="hrp-tag">Real parts. Real diagnosis. No upsell, ever.</p>
+    <nav class="hrp-nav" aria-label="Main">
+      <a href="https://honestrideparts.com/">Home</a>
+      <span class="cur">Newsletter</span>
+      <a href="https://honestrideparts.com/used-parts.html">Used Parts</a>
+      <a href="https://honestrideparts.com/accessories.html">Accessories</a>
+      <a href="https://honestrideparts.com/reviews.html">Buyer's Guide</a>
+      <a href="https://honestrideparts.com/guides.html">DIY Guides</a>
+      <a href="https://honestrideparts.com/about.html">About</a>
+    </nav>
+  </div>
 
   <header class="mast">
     <div class="eyebrow">Honest Ride Parts · Free newsletter</div>
