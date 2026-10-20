@@ -2,15 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://honestrideparts.com/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/accessories.html</loc>
     <lastmod>2026-10-12</lastmod>
-  </url>
-  <url>
-    <loc>https://honestrideparts.com/quote-check.html</loc>
-    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/used-parts.html</loc>
@@ -23,6 +19,10 @@
   <url>
     <loc>https://honestrideparts.com/dashboard-lights.html</loc>
     <lastmod>2026-10-13</lastmod>
+  </url>
+  <url>
+    <loc>https://honestrideparts.com/newsletter.html</loc>
+    <lastmod>2026-10-20</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/guides.html</loc>
