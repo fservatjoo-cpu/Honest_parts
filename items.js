@@ -8,6 +8,11 @@
 
   "accessories" is the category name you choose in the admin page.
   Use data-items="cars" on cars.html, and so on.
+
+  To make the items look exactly like the cards already on your page, add
+  data-theme="site":
+
+      <div data-items="accessories" data-theme="site"></div>
 */
 (function () {
   // ======= SET THIS ONE LINE (your Worker address, no slash at the end) =======
@@ -71,15 +76,39 @@
     return html;
   }
 
+  // Same markup as the cards already on honestrideparts.com pages,
+  // so the page's own styles are used.
+  function siteCard(it) {
+    var html = '<article class="card">';
+    var vid = youtubeId(it.video);
+    if (vid) {
+      html += '<div style="position:relative;width:100%;aspect-ratio:16/9"><iframe src="https://www.youtube-nocookie.com/embed/' + vid +
+        '" title="' + esc(it.title) + '" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>';
+    } else if (it.image) {
+      html += '<img src="' + esc(it.image) + '" alt="' + esc(it.title) + '" loading="lazy">';
+    }
+    html += '<div class="body"><h3>' + esc(it.title) + '</h3>';
+    if (it.description) html += '<p>' + esc(it.description) + '</p>';
+    var link = safeUrl(it.link);
+    if (link) {
+      html += '<div class="btns"><a class="btn" href="' + esc(link) + '" target="_blank" rel="noopener sponsored">See it</a></div>';
+    }
+    html += '</div></article>';
+    return html;
+  }
+
   function fill(box) {
     var cat = box.getAttribute("data-items") || "";
     var url = API + "/items" + (cat ? "?category=" + encodeURIComponent(cat) : "");
+    var site = box.getAttribute("data-theme") === "site";
     fetch(url).then(function (r) { return r.json(); }).then(function (items) {
       if (!Array.isArray(items) || !items.length) {
-        box.innerHTML = '<div class="hrp-empty">Coming soon.</div>';
+        box.innerHTML = site ? "" : '<div class="hrp-empty">Coming soon.</div>';
         return;
       }
-      box.innerHTML = '<div class="hrp-grid">' + items.map(card).join("") + '</div>';
+      box.innerHTML = site
+        ? '<div class="grid">' + items.map(siteCard).join("") + '</div>'
+        : '<div class="hrp-grid">' + items.map(card).join("") + '</div>';
     }).catch(function () {
       box.innerHTML = '<div class="hrp-empty">Could not load items right now.</div>';
     });
