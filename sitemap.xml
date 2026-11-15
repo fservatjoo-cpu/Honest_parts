@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://honestrideparts.com/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-15</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/accessories.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://honestrideparts.com/newsletter.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-15</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/newsletter-1.html</loc>
@@ -33,8 +33,12 @@
     <lastmod>2026-11-03</lastmod>
   </url>
   <url>
+    <loc>https://honestrideparts.com/newsletter-4.html</loc>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+  <url>
     <loc>https://honestrideparts.com/newsletter-3.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-15</lastmod>
   </url>
   <url>
     <loc>https://honestrideparts.com/guides.html</loc>
@@ -59,9 +63,5 @@
   <url>
     <loc>https://honestrideparts.com/terms.html</loc>
     <lastmod>2026-09-24</lastmod>
-  </url>
-  <url>
-    <loc>https://honestrideparts.com/cars.html</loc>
-    <lastmod>2026-11-03</lastmod>
   </url>
 </urlset>

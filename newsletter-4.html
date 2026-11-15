@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Tell If a Repair Shop Is Overcharging You | The Honest Mile</title>
+<meta name="description" content="Written estimates, labor hours, part prices, old parts, and pressure tactics. What to check so you only pay for the work your car really needs.">
+<link rel="canonical" href="https://honestrideparts.com/newsletter-4.html">
+<meta property="og:title" content="How to Tell If a Repair Shop Is Overcharging You">
+<meta property="og:description" content="Written estimates, labor hours, part prices, old parts, and pressure tactics. What to check so you only pay for the work your car really needs.">
+<meta property="og:url" content="https://honestrideparts.com/newsletter-4.html">
+<meta property="og:type" content="article">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column, like a printed shop newsletter; odometer masthead, illustrated habit cards */
+:root{
+  --bg:#1B1F22; --panel:#23282B; --line:#333B40; --paper:#F4EFE6; --muted:#9AA1A8;
+  --accent:#E8590C; --accent-soft:rgba(232,89,12,.14);
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --ui:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--paper);font-family:var(--ui);font-size:17px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding-inline:18px;padding-block:24px 56px;display:flex;flex-direction:column;gap:32px}
+.topnav{display:flex;flex-wrap:wrap;gap:16px;font-weight:600}
+.topnav a{color:var(--paper);text-decoration:none}
+.topnav a:hover{color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* masthead */
+.mast{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,10vw,84px);line-height:.9;margin:0;text-transform:uppercase;letter-spacing:-.01em}
+.mast h1 span{color:var(--accent)}
+.odo{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.digits{display:inline-flex;gap:3px;background:#0d1012;border:1px solid var(--line);border-radius:8px;padding:6px}
+.digits b{font-family:var(--mono);font-weight:500;font-size:26px;width:24px;height:38px;display:grid;place-items:center;background:linear-gradient(#2a3034,#15191c 50%,#2a3034);border-radius:3px;color:var(--paper)}
+.digits b.last{color:var(--accent)}
+.odo small{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.mast p{margin:0;color:var(--muted);max-width:56ch}
+
+/* issue index */
+.issues{display:flex;flex-direction:column;gap:8px}
+.issues h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
+.issues ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.issues a{display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--paper);padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.issues a:hover{border-color:var(--accent)}
+.issues .no{font-family:var(--mono);font-size:13px;color:var(--accent);flex:none}
+.issues .new{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.08em;background:var(--accent);color:#fff;padding:2px 8px;border-radius:999px;flex:none}
+
+/* article */
+article{display:flex;flex-direction:column;gap:22px;scroll-margin-top:16px}
+.ihead{display:flex;flex-direction:column;gap:10px}
+.ihead h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,48px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
+.prose{font-family:var(--read);font-size:19px;line-height:1.65;display:flex;flex-direction:column;gap:16px}
+.prose p{margin:0}
+.byline{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:22px;color:#fff;flex:none}
+.byline div{display:flex;flex-direction:column;line-height:1.3}
+.byline b{font-weight:700}
+.byline span{color:var(--muted);font-size:14px}
+
+.habit{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.art{background:#14181b;border-bottom:1px solid var(--line);display:grid;place-items:center;padding:18px}
+.art svg{width:100%;max-width:520px;height:auto;display:block}
+.hbody{padding:22px 22px 8px;display:flex;flex-direction:column;gap:14px}
+.hno{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.habit h3{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);margin-top:12px}
+@media (max-width:560px){.facts{grid-template-columns:minmax(0,1fr)}}
+.facts div{padding:14px 22px;display:flex;flex-direction:column;gap:2px}
+.facts div+div{border-left:1px solid var(--line)}
+@media (max-width:560px){.facts div+div{border-left:0;border-top:1px solid var(--line)}}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-weight:600}
+.shop{display:flex;justify-content:flex-start;padding:0 22px 22px}
+.btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;padding:11px 20px;border-radius:999px}
+.btn:hover{filter:brightness(1.08)}
+
+.check{background:var(--accent-soft);border:1px solid var(--accent);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.check h3{font-family:var(--display);font-weight:800;font-size:26px;margin:0;text-transform:uppercase}
+.check label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:17px}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--accent);flex:none}
+.check input:checked+span{text-decoration:line-through;color:var(--muted)}
+
+.lesson{font-family:var(--read);font-size:22px;line-height:1.45;border-left:4px solid var(--accent);padding-left:18px;margin:0}
+.next{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border:1px dashed var(--line);border-radius:12px}
+.next span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.sign{font-family:var(--read);font-size:19px;line-height:1.5}
+.sign p{margin:0}
+.fine{font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:16px}
+.fine p{margin:0}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.tools{grid-template-columns:minmax(0,1fr)}}
+.tools a{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:var(--paper);display:flex;flex-direction:column;gap:4px}
+.tools a:hover{border-color:var(--accent)}
+.tools b{font-family:var(--display);font-size:22px;text-transform:uppercase}
+.tools span{color:var(--muted);font-size:15px}
+
+.btn.sm{padding:9px 16px;font-size:15px;align-self:flex-start;margin-top:4px}
+.stat{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.stat div{display:flex;flex-direction:column}
+.stat b{font-family:var(--display);font-weight:800;font-size:44px;line-height:1}
+.stat div:last-child b{color:var(--accent)}
+.stat span{color:var(--muted);font-size:14px}
+.stat i{font-style:normal;font-size:28px;color:var(--muted)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.stage-h{padding:20px 22px 4px;display:flex;flex-direction:column;gap:6px}
+.stage h3{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.05;margin:0;text-transform:uppercase}
+.mlist{list-style:none;margin:0;padding:0}
+.mis{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px 22px;border-top:1px solid var(--line)}
+.mis:first-child{border-top:0}
+.mno{font-family:var(--mono);font-size:15px;color:var(--accent);padding-top:4px}
+.mis div{display:flex;flex-direction:column;gap:8px}
+.mis h4{margin:0;font-size:20px;line-height:1.25}
+.mis p{margin:0;font-family:var(--read);font-size:18px;line-height:1.6}
+
+/* Site header copied from the home page so every page has the same menu */
+.hrp-head{padding:28px 16px 20px;text-align:center;border-bottom:2px solid #E8590C;background:#1B1F22;margin-inline:-18px}
+.hrp-brand{display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none}
+.hrp-brand svg{width:34px;height:34px;color:#E8590C;flex-shrink:0}
+.hrp-brand b{font-family:'Oswald',"Arial Narrow",sans-serif;font-size:36px;font-weight:700;letter-spacing:.5px;color:#F4EFE6;line-height:1.1}
+.hrp-brand b span{color:#E8590C}
+.hrp-tag{margin:6px 0 0;font-size:15px;color:#8A9199;font-family:'IBM Plex Sans',sans-serif}
+.hrp-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin-top:16px}
+.hrp-nav a,.hrp-nav .cur{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;color:#F4EFE6;text-decoration:none;padding-bottom:4px;border-bottom:2px solid transparent}
+.hrp-nav a:hover,.hrp-nav a:focus-visible{color:#E8590C;border-bottom-color:#E8590C}
+.hrp-nav .cur{color:#E8590C;border-bottom-color:#E8590C}
+@media (max-width:480px){.hrp-brand b{font-size:28px}}
+</style>
+<style>
+.mini{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}
+.mini a{text-decoration:none;color:var(--paper);font-family:var(--display);font-weight:800;font-size:28px;text-transform:uppercase}
+.mini a span{color:var(--accent)}
+.mini small{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.pager{grid-template-columns:minmax(0,1fr)}}
+.pager a{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--paper);display:flex;flex-direction:column;gap:2px}
+.pager a:hover{border-color:var(--accent)}
+.pager a.r{text-align:right}
+.pager small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.pager span{font-weight:600}
+.lead{background:var(--panel);border:1px solid var(--accent);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--paper);display:block}
+.lead .art{border-bottom:1px solid var(--line)}
+.lead div.t{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px}
+.lead h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,6vw,42px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
+.lead p{margin:0;color:var(--muted);font-family:var(--read);font-size:18px}
+.lead .btn{align-self:flex-start}
+.lead:hover{border-color:#ff7a2e}
+.tips{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.tip{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px}
+@media (max-width:560px){.tip{grid-template-columns:minmax(0,1fr)}}
+.ticon{width:56px;height:56px;border-radius:14px;background:#14181b;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent)}
+.ticon svg{width:34px;height:34px}
+.ticon svg *{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.tip>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.tip .hno{display:block}
+.tip h3{font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.tip p{margin:0;font-family:var(--read);font-size:18px;line-height:1.6}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;font-size:16px}
+.note b{color:var(--accent)}
+.shops{display:flex;flex-wrap:wrap;gap:8px}
+.kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+@media (max-width:560px){.kit{grid-template-columns:minmax(0,1fr)}}
+.kit label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:17px}
+.kit input{width:20px;height:20px;margin-top:3px;accent-color:var(--accent);flex:none}
+.kit input:checked+span{text-decoration:line-through;color:var(--muted)}
+</style>
+<style>
+.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-family:var(--read);font-size:18px;line-height:1.55}
+.pts b,.tip p b{color:var(--paper)}
+.flags{background:var(--panel);border:1px solid #c62f2f;border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.flags h3{font-family:var(--display);font-weight:800;font-size:26px;margin:0;text-transform:uppercase}
+.flags ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px}
+@media (max-width:560px){.flags ul{grid-template-columns:minmax(0,1fr)}}
+.flags li{display:flex;gap:10px;align-items:flex-start;font-size:16.5px;line-height:1.4}
+.flags li span{color:#ff6b6b;font-weight:700;flex:none;width:18px}
+.steps{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.steps h3{font-family:var(--display);font-weight:800;font-size:26px;margin:0;text-transform:uppercase}
+.steps ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-family:var(--read);font-size:18px;line-height:1.55}
+.steps ol li::marker{color:var(--accent);font-family:var(--mono);font-weight:500}
+.mikebox{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:var(--accent-soft);border:1px solid var(--accent);border-radius:16px;padding:20px 22px}
+.mikebox div{display:flex;flex-direction:column;gap:4px;max-width:46ch}
+.mikebox b{font-family:var(--display);font-weight:800;font-size:26px;text-transform:uppercase;line-height:1.1}
+.mikebox p{margin:0;font-size:16.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hrp-head">
+    <a class="hrp-brand" href="https://honestrideparts.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13"></path><path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1v-1h-11v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"></path><circle cx="7" cy="17.5" r="1.5"></circle><circle cx="17" cy="17.5" r="1.5"></circle></svg><b>HONEST RIDE <span>PARTS</span></b></a>
+    <p class="hrp-tag">Real parts. Real diagnosis. No upsell, ever.</p>
+    <nav class="hrp-nav" aria-label="Main">
+      <a href="https://honestrideparts.com/">Home</a>
+      <a class="cur" href="https://honestrideparts.com/newsletter.html">Newsletter</a>
+      <a href="https://honestrideparts.com/used-parts.html">Used Parts</a>
+      <a href="https://honestrideparts.com/accessories.html">Accessories</a>
+      <a href="https://honestrideparts.com/reviews.html">Buyer's Guide</a>
+      <a href="https://honestrideparts.com/guides.html">DIY Guides</a>
+      <a href="https://honestrideparts.com/about.html">About</a>
+    </nav>
+  </div>
+  <div class="mini"><a href="https://honestrideparts.com/newsletter.html">The Honest <span>Mile</span></a><small>Free newsletter · Goal: 500,000 miles</small></div>
+  <article id="issue-4">
+    <div class="ihead">
+      <div class="eyebrow">The Honest Mile · Issue #4</div>
+      <h2>How to Tell If a Repair Shop Is Overcharging You</h2>
+      <div class="byline"><div class="avatar" aria-hidden="true">F</div><div><b>Fabio</b><span>Honest Ride Parts</span></div></div>
+    </div>
+    <div class="habit"><div class="art" aria-hidden="true"><svg viewBox="0 0 520 230"><rect width="520" height="230" fill="#14181b"/>
+<g font-family="Arial">
+<rect x="40" y="18" width="250" height="196" rx="6" fill="#F4EFE6"/>
+<path d="M40 214 l12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 10 -7" fill="#14181b"/>
+<text x="58" y="44" fill="#1B1F22" font-weight="700" font-size="14">REPAIR ESTIMATE</text>
+<text x="252" y="44" fill="#8A9199" font-size="10" text-anchor="end">SAMPLE</text>
+<line x1="58" y1="54" x2="272" y2="54" stroke="#1B1F22" stroke-width="1.5"/>
+<g font-size="12" fill="#1B1F22">
+<text x="58" y="76">Parts: front pads</text><text x="272" y="76" text-anchor="end">$85</text>
+<text x="58" y="98">Labor hours</text><text x="272" y="98" text-anchor="end" fill="#c62f2f" font-weight="700">3.5 hrs</text>
+<text x="58" y="120">Hourly rate</text><text x="272" y="120" text-anchor="end">$140</text>
+<text x="58" y="142">Shop fees</text><text x="272" y="142" text-anchor="end">$25</text>
+<text x="58" y="164" fill="#c62f2f" font-weight="700">Misc. repairs</text><text x="272" y="164" text-anchor="end" fill="#c62f2f" font-weight="700">$300</text>
+</g>
+<line x1="58" y1="176" x2="272" y2="176" stroke="#1B1F22" stroke-width="1.5"/>
+<text x="58" y="196" fill="#1B1F22" font-weight="700" font-size="13">TOTAL</text><text x="272" y="196" text-anchor="end" fill="#1B1F22" font-weight="700" font-size="13">$900</text>
+<rect x="50" y="84" width="230" height="20" rx="5" fill="none" stroke="#E8590C" stroke-width="3"/>
+<rect x="50" y="150" width="230" height="20" rx="5" fill="none" stroke="#E8590C" stroke-width="3"/>
+<path d="M282 94 H322 M282 160 H322" stroke="#E8590C" stroke-width="3" stroke-linecap="round"/>
+<g fill="#F4EFE6" font-size="13">
+<text x="330" y="70" fill="#E8590C" font-weight="700" font-size="15">Ask about:</text>
+<text x="330" y="98">3.5 hours for pads?</text>
+<text x="330" y="116" fill="#9AA1A8" font-size="12">Usually about 1 to 1.5</text>
+<text x="330" y="164">"Misc. repairs"?</text>
+<text x="330" y="182" fill="#9AA1A8" font-size="12">Every line needs a reason</text>
+</g>
+</g></svg></div></div>
+    <div class="prose">
+      <p>Hi, it's Fabio from Honest Ride Parts.</p>
+      <p>Most mechanics are honest. The bad ones stand out once you know what to look for. Here's a simple way to protect yourself when you take your car to a repair shop, the way I'd explain it to a friend.</p>
+    </div>
+    <ol class="tips">
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 10h20l8 8v22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z"/><path d="M14 22h16M14 29h16M14 36h10"/></svg></div><div><span class="hno">1 of 6</span><h3>Before you even drop the car off</h3><ul class="pts"><li>Get <b>2 to 3 written estimates</b> for anything bigger than an oil change or basic service. If one shop is much higher than the others for the same job, that's your first clue.</li><li>Check recent Google and Yelp reviews, and look for shops whose technicians are <b>ASE certified</b>. A shop that won't give you a written estimate is already a red flag.</li><li>Know the typical labor rate in your area. Many independent shops charge roughly <b>$120 to $160 an hour</b>, and dealerships are usually higher. Rates vary by city, so call two or three local shops to learn yours. If someone quotes $250 an hour for an everyday car, ask why.</li></ul></div></li>
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="9" y="6" width="30" height="36" rx="3"/><path d="M15 15h18M15 22h18M15 29h10"/><path d="M29 33l3 3 6-7"/></svg></div><div><span class="hno">2 of 6</span><h3>When they give you the estimate</h3><p>A good shop will hand you a clear written estimate that breaks down:</p><ul class="pts"><li>Parts, with part numbers or brand if possible</li><li>Labor hours</li><li>Their hourly rate</li><li>Any shop fees or taxes</li></ul><p>Vague lines like “miscellaneous repairs” or “engine work – $1,800” are not okay. Ask them to explain every line in plain English. A trustworthy mechanic will show you the worn brake pads, the leaking hose, or the bad battery and tell you why it needs to be replaced.</p></div></li>
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="26" r="15"/><path d="M24 17v9l6 4"/><path d="M19 6h10"/></svg></div><div><span class="hno">3 of 6</span><h3>Check the labor hours</h3><p>Shops use standard “flat-rate” times from repair databases like ALLDATA or Mitchell 1. These are the times a skilled technician is expected to take for each job.</p><ul class="pts"><li>Front brake pads on an everyday car are often about <b>1 to 1.5 hours</b> per axle.</li><li>If they quote 3 to 4 hours for the same job, ask them to show you where that number comes from.</li><li>Honest shops will pull it up and show you. Shady ones get defensive.</li></ul><p>Also watch for double-billing. When two jobs share the same work, like a timing belt and a water pump that are often replaced together, the labor should be less than the full time for both jobs added up.</p></div></li>
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="8"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M11 37l4-4M33 15l4-4"/></svg></div><div><span class="hno">4 of 6</span><h3>Check the parts</h3><p>Shops mark up parts, and that's normal. A markup of <b>20% to 50%</b> is common. What's not normal is charging dealer (OEM) prices for cheap aftermarket parts, or charging $180 for a part you can buy online for $40.</p><p>You can quickly look up common parts on RockAuto, AutoZone, or O'Reilly to get a ballpark price. Ask what brand they're installing. You don't have to demand the cheapest part, but you should know what you're paying for.</p></div></li>
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 18h32l-3 22H11z"/><path d="M14 18l4-10h12l4 10"/><path d="M20 26v8M28 26v8"/></svg></div><div><span class="hno">5 of 6</span><h3>Ask for your old parts</h3><p>Tell the shop when you drop the car off that you want your old parts back. Most honest shops don't mind. If they suddenly “can't find them” or say they already threw them away, be suspicious. Seeing the worn-out part is one of the simplest ways to confirm the work was really done.</p><p class="note"><b>Good to know:</b> Some parts, like rebuilt alternators, starters, or parts covered by a warranty, have to go back to the supplier as a “core.” That's normal. Ask the shop to show you the old part before it's sent back.</p></div></li>
+      <li class="tip"><div class="ticon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 6l19 33H5z"/><path d="M24 18v10"/><path d="M24 33v1"/></svg></div><div><span class="hno">6 of 6</span><h3>Watch for pressure tactics</h3><ul class="pts"><li>“This is dangerous, you can't drive it another mile” when you came in for something minor.</li><li>A long list of extra repairs that appears after they start the job you approved.</li><li>Pushing an expensive diagnostic every time, even when the problem is obvious.</li><li>Making it hard for you to take the car somewhere else for a second opinion.</li></ul><p>Good shops call you before doing extra work and give you time to decide. They won't make you feel stupid for asking questions.</p></div></li>
+    </ol>
+    <div class="mikebox">
+      <div><b>Not sure if a price is fair?</b><p>Before you approve a repair, describe the problem to Mike, our free assistant. Get an idea of what's likely wrong, what the job usually involves, and which parts it needs, so you can walk into the shop with better questions.</p></div>
+      <a class="btn" href="https://honestrideparts.com/#ask-mike">Ask Mike before you pay</a>
+    </div>
+    <div class="flags">
+      <h3>Quick red-flag summary</h3>
+      <ul><li><span aria-hidden="true">✕</span>No written, itemized estimate</li><li><span aria-hidden="true">✕</span>Won&#x27;t explain the problem clearly or show you the bad part</li><li><span aria-hidden="true">✕</span>Labor hours much higher than the standard time</li><li><span aria-hidden="true">✕</span>Final bill much higher than the estimate, with no call for your OK</li><li><span aria-hidden="true">✕</span>“Fix it today or else” pressure</li><li><span aria-hidden="true">✕</span>Charges for dealer parts but installs generic ones</li><li><span aria-hidden="true">✕</span>Refuses to return or show you the old parts</li></ul>
+    </div>
+    <div class="steps">
+      <h3>What to do if something feels off</h3>
+      <ol><li><b>Don't approve anything</b> until you're comfortable with it.</li><li><b>Get a second opinion</b> from another shop. Many will look at it for a small diagnostic fee, or even free if they want the work.</li><li><b>If the work is already done</b> and the bill looks wrong, ask for a full breakdown and your old parts. Keep copies of the estimate, the bill, and any texts or emails. In many states, a shop can keep your car until the bill is paid, so you may need to pay first and dispute it afterward. Write “paid under protest” on your copy of the receipt.</li><li><b>If they still won't fix it</b> and you believe you were overcharged, contact your state's consumer protection office or the Better Business Bureau. If you paid by credit card, you may also be able to dispute the charge when the work doesn't match what you approved.</li></ol>
+    </div>
+    <div class="check">
+      <h3>This week's quick checklist</h3>
+      <label for="c4-1"><input type="checkbox" id="c4-1"><span>Call two or three local shops and ask their hourly labor rate.</span></label>
+      <label for="c4-2"><input type="checkbox" id="c4-2"><span>Ask for a written, itemized estimate before any repair.</span></label>
+      <label for="c4-3"><input type="checkbox" id="c4-3"><span>Tell the shop you want your old parts back.</span></label>
+      <label for="c4-4"><input type="checkbox" id="c4-4"><span>Find one or two shops you trust, and stick with them.</span></label>
+    </div>
+    <p class="lesson">The best long-term protection is a shop you trust. Once a mechanic knows you'll ask questions and compare prices, your chance of being overcharged drops a lot.</p>
+    <div class="next"><span>Next issue</span><b>Coming next week. Check back soon.</b></div>
+    <div class="sign"><p>Drive safely,</p><p><b>Fabio</b><br>Honest Ride Parts</p></div>
+    <div class="fine">
+      <p>This newsletter is general information, not professional mechanical or legal advice. Prices and consumer protection rules vary by state and city.</p>
+    </div>
+  </article>
+  <nav class="pager" aria-label="More issues"><a href="newsletter-3.html"><small>← Previous issue</small><span>3 Cheap Habits That Protect Your Car&#x27;s Most Expensive Parts</span></a><a class="r" href="newsletter.html"><small>All issues →</small><span>See every issue of The Honest Mile</span></a></nav>
+  <section class="tools" aria-label="Free tools">
+    <a href="https://honestrideparts.com/car-noise-checker.html"><b>What's that noise?</b><span>Pick the sound your car makes and see the likely causes.</span></a>
+    <a href="https://honestrideparts.com/dashboard-lights.html"><b>Dashboard lights</b><span>Tap the warning light you see and find out what it means.</span></a>
+  </section>
+</div>
+</body>
+</html>
